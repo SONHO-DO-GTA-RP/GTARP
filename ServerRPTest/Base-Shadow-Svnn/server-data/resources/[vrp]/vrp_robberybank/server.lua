@@ -7,55 +7,55 @@ vRPclient = Tunnel.getInterface("vRP","vRP_bank")
 local banks = {
 	["fleeca"] = {
 		position = { ['x'] = 147.04908752441, ['y'] = -1044.9448242188, ['z'] = 29.36802482605 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank",
 		lastrobbed = 0
 	},
 	["fleeca2"] = {
 		position = { ['x'] = -2957.6674804688, ['y'] = 481.45776367188, ['z'] = 15.697026252747 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank (Highway)",
 		lastrobbed = 0
 	},
 	["blainecounty"] = {
 		position = { ['x'] = -107.06505584717, ['y'] = 6474.8012695313, ['z'] = 31.62670135498 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Blaine County Savings",
 		lastrobbed = 0
 	},
 	["fleeca3"] = {
 		position = { ['x'] = -1212.2568359375, ['y'] = -336.128295898438, ['z'] = 36.7907638549805 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank (Vinewood Hills)",
 		lastrobbed = 0
 	},
 	["fleeca4"] = {
 		position = { ['x'] = -354.452575683594, ['y'] = -53.8204879760742, ['z'] = 48.0463104248047 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank (Burton)",
 		lastrobbed = 0
 	},
 	["fleeca5"] = {
 		position = { ['x'] = 309.967376708984, ['y'] = -283.033660888672, ['z'] = 53.1745223999023 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank (Alta)",
 		lastrobbed = 0
 	},
 	["fleeca6"] = {
 		position = { ['x'] = 1176.86865234375, ['y'] = 2711.91357421875, ['z'] = 38.097785949707 },
-		reward = 30000 + math.random(100000,200000),
+		reward = 1000000 + math.random(100000,200000),
 		nameofbank = "Fleeca Bank (Desert)",
 		lastrobbed = 0
 	},
 	["pacific"] = {
 		position = { ['x'] = 255.001098632813, ['y'] = 225.855895996094, ['z'] = 101.005694274902 },
-		reward = 60000 + math.random(100000,200000),
+		reward = 2500000 + math.random(100000,200000),
 		nameofbank = "Pacific Standard PDB (Downtown Vinewood)",
 		lastrobbed = 0
 	},
 	["bancoprincipal"] = {
 		position = { ['x'] = 265.60995483398, ['y'] =  213.61218261719, ['z'] = 101.68347930908 },
-		reward = 150000 + math.random(100000,200000),
+		reward = 5000000 + math.random(100000,200000),
 		nameofbank = "Banco do Brasil (Principal)",
 		lastrobbed = 0
 	}		
@@ -72,7 +72,7 @@ AddEventHandler('es_bank:toofar', function(robb)
 	if(robbers[source])then
 		TriggerClientEvent('es_bank:toofarlocal', source)
 		robbers[source] = nil
-		TriggerClientEvent('chatMessage', -1, 'NEWS', {255, 0, 0}, "Robbery was cancelled at: ^2" .. banks[robb].nameofbank)
+		TriggerClientEvent('chatMessage', -1, 'NEWS', {255, 0, 0}, "O roubo foi cancelado: ^2" .. banks[robb].nameofbank)
 	end
 end)
 
@@ -81,7 +81,7 @@ AddEventHandler('es_bank:playerdied', function(robb)
 	if(robbers[source])then
 		TriggerClientEvent('es_bank:playerdiedlocal', source)
 		robbers[source] = nil
-		TriggerClientEvent('chatMessage', -1, 'NEWS', {255, 0, 0}, "Robbery was cancelled at: ^2" .. banks[robb].nameofbank)
+		TriggerClientEvent('chatMessage', -1, 'NEWS', {255, 0, 0}, "O roubo foi cancelado: ^2" .. banks[robb].nameofbank)
 	end
 end)
 
@@ -96,7 +96,7 @@ AddEventHandler('es_bank:rob', function(robb)
 		end
 		TriggerClientEvent('chatMessage', -1, 'AVISO', {255, 0, 0}, "Assalto a Banco em Andamento em ^2" .. bank.nameofbank)
 		TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Voce iniciou um Assalto ao Banco: ^2" .. bank.nameofbank .. "^0, Não se afaste muito deste ponto!")
-		TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Segure o Banco por ^15 ^0minutes, e escape da Policia Vivo, e o Dinheiro é Seu!")
+		TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, "Segure o Banco por ^15 ^0minutes, e dê a fuga marginal!")
 		TriggerClientEvent('es_bank:currentlyrobbing', source, robb)
 		banks[robb].lastrobbed = os.time()
 		robbers[source] = robb
@@ -106,7 +106,7 @@ AddEventHandler('es_bank:rob', function(robb)
 				local user_id = vRP.getUserId({savedSource})
 				if(user_id)then
 					vRP.giveInventoryItem({user_id,"dirty_money",bank.reward,true})
-					TriggerClientEvent('chatMessage', -1, 'AVISO', {255, 0, 0}, "O Roubo de ^2" .. bank.nameofbank .. "^0! foi concluido, Policiais deixaram os Bandidos Escaparem.")	
+					TriggerClientEvent('chatMessage', -1, 'AVISO', {255, 0, 0}, "O Roubo de ^2" .. bank.nameofbank .. "^0! foi concluido, os bandidos estão com a grana na mão!")	
 					TriggerClientEvent('es_bank:robberycomplete', savedSource, bank.reward)
 				end
 			end

@@ -1,9 +1,9 @@
 local cfg = {}
 
 cfg = {
-  thirst_per_minute = 0.30,
-  hunger_per_minute = 0.25,
-  overflow_damage_factor = 2,
+  thirst_per_minute = 0.10,
+  hunger_per_minute = 0.15,
+  overflow_damage_factor = 1,
   pvp = true,
   police = false
 }

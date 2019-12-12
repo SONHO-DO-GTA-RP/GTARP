@@ -53,7 +53,7 @@ cfg.item_transformers = {
         reagents={}, -- items taken per unit
         products={}, -- items given per unit
         aptitudes={ -- optional
-          ["physical.strength"] = 1 -- "group.aptitude", give 1 exp per unit
+          ["physical.strength"] = 5 -- "group.aptitude", give 1 exp per unit
         }
       }
     }
@@ -62,10 +62,10 @@ cfg.item_transformers = {
     name="Campo de Ervas", -- menu name
     permissions = {"harvest.weed"}, -- you can add permissions
     r=0,g=200,b=0, -- color
-    max_units=200,
-    units_per_minute=5,
+    max_units=2000,
+    units_per_minute=20,
     x=2208.777,y=5578.235,z=53.735, -- pos
-    radius=7.5, height=1.5, -- area
+    radius=10.0, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- action name
         description="Colher maconha.", -- action description
@@ -73,7 +73,7 @@ cfg.item_transformers = {
         out_money=0, -- money earned per unit
         reagents={}, -- items taken per unit
         products={ -- items given per unit
-          ["weed"] = 1
+          ["weed"] = 2
         }
       }
     }
@@ -83,10 +83,10 @@ cfg.item_transformers = {
     name="Campo de Metanfetamina", -- Nome do menu
     permissions = {"harvest.metanfetamina"}, -- Você pode adicionar permissões
     r=0,g=200,b=0, -- cor
-    max_units=200,
-    units_per_minute=5,
+    max_units=2000,
+    units_per_minute=20,
     x=79.686859130859,y=3705.6840820313,z=41.077156066895, -- Localização
-    radius=7.5, height=1.5, -- area
+    radius=10.0, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- Nome da ação
         description="Colher Crystal Melamine.", -- Descrição do produto a se colher
@@ -94,7 +94,7 @@ cfg.item_transformers = {
         out_money=0, -- Dinheiro ganho por unidade
         reagents={}, -- Itens colhidos por unidade
         products={ -- Nome do produto fornecido por unidade
-          ["crystalmelamine"] = 1
+          ["crystalmelamine"] = 2
         }
       }
     }
@@ -104,20 +104,20 @@ cfg.item_transformers = {
     name="Processador de Metanfetamina", -- menu name
     permissions = {"process.metanfetamina"}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
-    max_units=200, -- unidades maximas do item
+    max_units=2000, -- unidades maximas do item
     units_per_minute=200, -- unidades que o transformador ganha de volta por minuto
-    x=1316.8662109375,y=-450.48968505859,z=76.512893676758, -- pos
-    radius=5.5, height=1.5, -- area
+    x=1316.8662109375,y=-450.48968505859,z=69.512893676758, -- pos
+    radius=7.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Processar"] = { -- action name
         description="Processador de Metanfetamina.", -- action description
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
-          ["crystalmelamine"] = 1
+          ["crystalmelamine"] = 2
 	    },
         products={ -- items given per unit
-          ["metanfetamina"] = 2
+          ["metanfetamina"] = 1
         }
       }
     }
@@ -138,7 +138,7 @@ cfg.item_transformers = {
         out_money=0, -- Dinheiro ganho por unidade
         reagents={}, -- Itens colhidos por unidade
         products={ -- Nome do produto fornecido por unidade
-          ["folhadecoca"] = 1
+          ["folhadecoca"] = 2
         }
       }
     }
@@ -158,10 +158,10 @@ cfg.item_transformers = {
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
-          ["folhadecoca"] = 1
+          ["folhadecoca"] = 2
 	    },
         products={ -- items given per unit
-          ["cocaina"] = 2
+          ["cocaina"] = 1
         }
       }
     }
@@ -174,7 +174,7 @@ cfg.item_transformers = {
     max_units=200,
     units_per_minute=2,
     x=1534.5666503906,y=6327.1376953125,z=24.215845108032, -- Localização    
-    radius=7.5, height=1.5, -- area
+    radius=15.0, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- Nome da ação
         description="Colher pedras para lavagem.", -- Descrição do produto a se colher
@@ -182,7 +182,7 @@ cfg.item_transformers = {
         out_money=0, -- Dinheiro ganho por unidade
         reagents={}, -- Itens colhidos por unidade
         products={ -- Nome do produto fornecido por unidade
-          ["Pedra"] = 1
+          ["Pedra"] = 5
         }
       }
     }
@@ -224,10 +224,10 @@ cfg.item_transformers = {
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
-          ["Pedra"] = 1
+          ["Pedra"] = 5
         },
         products={ -- items given per unit
-          ["Minerio"] = 1
+          ["Minerio"] = 5
         }
       }
     }
@@ -287,10 +287,10 @@ cfg.item_transformers = {
         in_money=0, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
-          ["weed"] = 1
+          ["weed"] = 2
 		},
         products={ -- items given per unit
-		  ["cannabis"] = 2
+		  ["cannabis"] = 1
         }
       }
     }
@@ -325,7 +325,7 @@ for k,v in pairs(weedplants) do
         out_money=0, -- money earned per unit
         reagents={}, -- items taken per unit
         products={ -- items given per unit
-          ["weed"] = 1
+          ["weed"] = 2
         }
       }
     }
@@ -350,7 +350,7 @@ for k,v in pairs(warehouses) do
     recipes = {
       ["Build Pistol"] = { -- action name
         description="Construir pistola.", -- action description
-        in_money=1500, -- money taken per unit
+        in_money=5000, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={
 		  ["pistol_parts"] = 1
@@ -361,7 +361,7 @@ for k,v in pairs(warehouses) do
       },
       ["Build Shotgun"] = { -- action name
         description="Construir shotgun.", -- action description
-        in_money=3000, -- money taken per unit
+        in_money=15000, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={
 		  ["shotgun_parts"] = 1
@@ -372,7 +372,7 @@ for k,v in pairs(warehouses) do
       },
       ["Build SMG"] = { -- action name
         description="Construir submachinegun.", -- action description
-        in_money=5000, -- money taken per unit
+        in_money=25000, -- money taken per unit
         out_money=0, -- money earned per unit
         reagents={
 		  ["smg_parts"] = 1
@@ -420,19 +420,19 @@ cfg.hidden_transformers = {
 cfg.hidden_transformer_duration = 30-- 12 hours -- 5*24*60 -- 5 days
 
 -- configure the information reseller (can sell hidden transformers positions)
-cfg.informer = {
-  infos = {
-    ["weed plant"] = 10000,
-    ["gun warehouse"] = 25000
-  },
-  positions = {
-    {1821.12390136719,3685.9736328125,34.2769317626953},
-    {1804.2958984375,3684.12280273438,34.217945098877}
-  },
-  interval = 30, -- interval in minutes for the reseller respawn
-  duration = 10, -- duration in minutes of the spawned reseller
-  blipid = 133,
-  blipcolor = 2
-}
+-- cfg.informer = {
+--   infos = {
+--     ["weed plant"] = 10000,
+--     ["gun warehouse"] = 25000
+--   },
+--   positions = {
+--     {1821.12390136719,3685.9736328125,34.2769317626953},
+--     {1804.2958984375,3684.12280273438,34.217945098877}
+--   },
+--   interval = 30, -- interval in minutes for the reseller respawn
+--   duration = 10, -- duration in minutes of the spawned reseller
+--   blipid = 133,
+--   blipcolor = 2
+-- }
 
 return cfg
