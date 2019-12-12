@@ -43144,11 +43144,4 @@
   </Objects>
   <RemoveFromWorld />
   <Markers />
-  <Metadata>
-    <Creator>BOBINSANE</Creator>
-    <Name>Nameless Map</Name>
-    <Description />
-    <LoadingPoint xsi:nil="true" />
-    <TeleportPoint xsi:nil="true" />
-  </Metadata>
 </Map>
