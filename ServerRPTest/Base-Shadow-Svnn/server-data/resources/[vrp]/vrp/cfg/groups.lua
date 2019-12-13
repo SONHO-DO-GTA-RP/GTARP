@@ -146,12 +146,12 @@ cfg.groups = {
     _config = { gtype = "job" },
     "mission.carjack.vehicle"
   },
-  ["Traficante de Maconha"] = {
-    _config = { gtype = "job" },
-	"harvest.weed",
-	"process.weed",
-	"mission.delivery.weed",
-	"mission.delivery.pot"
+  -- ["Traficante de Maconha"] = {
+  --   _config = { gtype = "job" },
+	-- "harvest.weed",
+	-- "process.weed",
+	-- "mission.delivery.weed",
+	-- "mission.delivery.pot"
   },
   ["Traficante de Metanfetamina"] = {
     _config = { gtype = "job" },

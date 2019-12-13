@@ -60,7 +60,7 @@ cfg.item_transformers = {
   },
   {
     name="Campo de Ervas", -- menu name
-    permissions = {"harvest.weed"}, -- you can add permissions
+    permissions = {}, -- you can add permissions
     r=0,g=200,b=0, -- color
     max_units=20000,
     units_per_minute=2000,
@@ -275,7 +275,7 @@ cfg.item_transformers = {
   },  
   {
     name="Processar Maconha", -- menu name
-    permissions = {"process.weed"}, -- you can add permissions
+    permissions = {}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
     max_units=20000, -- unidades maximas do item
     units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
@@ -297,7 +297,7 @@ cfg.item_transformers = {
   },
   {
     name="Biqueira de Maconha", -- menu name
-    permissions = {"process.weed"}, -- you can add permissions
+    permissions = {}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
     max_units=20000, -- unidades maximas do item
     units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
