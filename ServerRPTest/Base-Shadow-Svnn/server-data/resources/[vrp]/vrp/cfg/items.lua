@@ -6,8 +6,8 @@ local cfg = {}
 -- idname = {name or genfunc, description or genfunc, genfunc choices or nil, weight or genfunc}
 -- a good practice is to create your own item pack file instead of adding items here
 cfg.items = {
-  ["weed"] = {"Planta de maconha", "Planta de maconha.", nil, 1.00}, -- no choices
-  ["folhadecoca"] = {"Folha de Coca", "Folha de Coca.", nil, 1.00}, -- no choices
+  ["weed"] = {"Planta de maconha", "Planta de maconha.", nil, 0.50}, -- no choices
+  ["folhadecoca"] = {"Folha de Coca", "Folha de Coca.", nil, 0.50}, -- no choices
   ["cocaina"] = {"Cocaina", "Cocaina em po.", nil, 1.00}, -- no choices
   ["crystalmelamine"] = {"Crystal Melamine", "Crystal Melamine.", nil, 0.50}, -- no choices
   ["metanfetamina"] = {"Metanfetamina", "Cristal de Metanfetamina.", nil, 1.00}, -- no choices  

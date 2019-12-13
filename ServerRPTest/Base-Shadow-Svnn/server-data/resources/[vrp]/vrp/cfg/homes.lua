@@ -37,7 +37,7 @@ local itemtr_study = {
 local itemtr_laboratory = {
   name="Mesa de Processamento", -- menu name
   r=0,g=255,b=0, -- color
-  max_units=20,
+  max_units=8000,
   units_per_minute=20,
   x=0,y=0,z=0, -- pos (doesn't matter as home component)
   radius=1.1, height=1.5, -- area
@@ -47,7 +47,7 @@ local itemtr_laboratory = {
       in_money=0, -- money taken per unit
       out_money=0, -- money earned per unit
       reagents={ -- items taken per unit
-	  ["folhadecoca"] = 1
+	  ["folhadecoca"] = 2
 	  
 	  },
       products={ -- items given per unit
@@ -63,7 +63,7 @@ local itemtr_laboratory = {
       in_money=0, -- money taken per unit
       out_money=0, -- money earned per unit
       reagents={ -- items taken per unit
-	  ["crystalmelamine"] = 1
+	  ["crystalmelamine"] = 2
 	  
 	  },
       products={ -- items given per unit
@@ -79,7 +79,7 @@ local itemtr_laboratory = {
       in_money=0, -- money taken per unit
       out_money=0, -- money earned per unit
       reagents={ -- items taken per unit
-	  ["weed"] = 1
+	  ["weed"] = 2
 	  },
       products={ -- items given per unit
 	  ["cannabis"] = 1

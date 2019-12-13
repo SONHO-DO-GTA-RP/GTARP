@@ -41,7 +41,7 @@ cfg.item_transformers = {
   {
     name="Academia", -- menu name
     r=255,g=125,b=0, -- color
-    max_units=1000,
+    max_units=10000,
     units_per_minute=1000,
     x=-1202.96252441406,y=-1566.14086914063,z=4.61040639877319, -- pos
     radius=7.5, height=1.5, -- area
@@ -62,8 +62,8 @@ cfg.item_transformers = {
     name="Campo de Ervas", -- menu name
     permissions = {"harvest.weed"}, -- you can add permissions
     r=0,g=200,b=0, -- color
-    max_units=2000,
-    units_per_minute=20,
+    max_units=20000,
+    units_per_minute=2000,
     x=2208.777,y=5578.235,z=53.735, -- pos
     radius=10.0, height=1.5, -- area
     recipes = {
@@ -83,8 +83,8 @@ cfg.item_transformers = {
     name="Campo de Metanfetamina", -- Nome do menu
     permissions = {"harvest.metanfetamina"}, -- Você pode adicionar permissões
     r=0,g=200,b=0, -- cor
-    max_units=2000,
-    units_per_minute=20,
+    max_units=20000,
+    units_per_minute=2000,
     x=79.686859130859,y=3705.6840820313,z=41.077156066895, -- Localização
     radius=10.0, height=1.5, -- area
     recipes = {
@@ -104,8 +104,8 @@ cfg.item_transformers = {
     name="Processador de Metanfetamina", -- menu name
     permissions = {"process.metanfetamina"}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
-    max_units=2000, -- unidades maximas do item
-    units_per_minute=200, -- unidades que o transformador ganha de volta por minuto
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
     x=1316.8662109375,y=-450.48968505859,z=69.512893676758, -- pos
     radius=7.5, height=1.5, -- area
     recipes = { -- items do menu
@@ -274,13 +274,13 @@ cfg.item_transformers = {
     }
   },  
   {
-    name="Processar Ervas", -- menu name
+    name="Processar Maconha", -- menu name
     permissions = {"process.weed"}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
-    max_units=200, -- unidades maximas do item
-    units_per_minute=200, -- unidades que o transformador ganha de volta por minuto
-    x=-781.90240478516,y=578.94976806641,z=126.74822235107, -- pos
-    radius=5.5, height=1.5, -- area
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
+    x=3818.8391113281,y=4442.521484375,z=2.8076543807983, -- pos 
+    radius=8.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Processar"] = { -- action name
         description="Processador de Maconha.", -- action description
@@ -293,8 +293,51 @@ cfg.item_transformers = {
 		  ["cannabis"] = 1
         }
       }
+    },
+    {
+    name="Processar Maconha", -- menu name
+    permissions = {"process.weed"}, -- you can add permissions
+    r=0,g=200,b=0, -- cor do menu
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
+    x=3818.8391113281,y=4442.521484375,z=2.8076543807983, -- pos 
+    radius=8.5, height=1.5, -- area
+    recipes = { -- items do menu
+      ["Processar"] = { -- action name
+        description="Processador de Maconha.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={  -- items taken per unit
+          ["weed"] = 2
+		    },
+        products={ -- items given per unit
+		  ["cannabis"] = 1
+        }
+      }
     }
   },
+  {
+    name="Biqueira de Maconha", -- menu name
+    permissions = {"sell.weed"}, -- you can add permissions
+    r=0,g=200,b=0, -- cor do menu
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
+    x=1662.2940673828,y=-47.983768463135,z=168.3123626709, -- pos 1662.2940673828,-47.983768463135,168.3123626709
+    radius=8.5, height=1.5, -- area
+    recipes = { -- items do menu
+      ["Vender"] = { -- action name
+        description="Vender Maconha.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={  -- items taken per unit
+          ["cannabis"] = 5
+		    },
+        products={ -- items given per unit
+		  ["dirty_money"] = 1250
+        }
+      }
+    }
+  }
 }
 
 
