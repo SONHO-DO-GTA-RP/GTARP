@@ -415,12 +415,12 @@ AddEventHandler("playerConnecting",function(name,setMessage, deferrals)
 
                 Debug.pend()
               else
-                print("[vRP] "..name.." ("..vRP.getPlayerEndpoint(source)..") rejected: not whitelisted (user_id = "..user_id..")")
+                print("[vRP] "..name.." ("..vRP.getPlayerEndpoint(source)..") Sem Whitelist, mande seu id para o canal #Whitelist no discord e aguarde: (user_id = "..user_id..")")
                 deferrals.done("[vRP] Not whitelisted (user_id = "..user_id..").")
               end
             end)
           else
-            print("[vRP] "..name.." ("..vRP.getPlayerEndpoint(source)..") rejected: banned (user_id = "..user_id..")")
+            print("[vRP] "..name.." ("..vRP.getPlayerEndpoint(source)..") Não permitido: Perdeu Vacilones (user_id = "..user_id..")")
             deferrals.done("[vRP] Banned (user_id = "..user_id..").")
           end
         end)
