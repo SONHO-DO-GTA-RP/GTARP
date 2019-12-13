@@ -152,7 +152,7 @@ cfg.groups = {
 	-- "process.weed",
 	-- "mission.delivery.weed",
 	-- "mission.delivery.pot"
-  },
+  -- },
   ["Traficante de Metanfetamina"] = {
     _config = { gtype = "job" },
 	"harvest.metanfetamina",
