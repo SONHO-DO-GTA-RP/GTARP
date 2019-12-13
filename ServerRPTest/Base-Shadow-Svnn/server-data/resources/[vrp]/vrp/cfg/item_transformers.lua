@@ -129,8 +129,8 @@ cfg.item_transformers = {
     r=0,g=200,b=0, -- cor
     max_units=200,
     units_per_minute=5,
-    x=-41.372623443604,y=3033.3776855469,z=41.020195007324, -- Localização
-    radius=7.5, height=1.5, -- area
+    x=701.15313720703,y=4171.8642578125,z=41.15034866333, -- Localização 701.15313720703,4171.8642578125,41.15034866333
+    radius=6.5, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- Nome da ação
         description="Colher folha de Coca.", -- Descrição do produto a se colher
@@ -150,7 +150,7 @@ cfg.item_transformers = {
     r=0,g=200,b=0, -- cor do menu
     max_units=200, -- unidades maximas do item
     units_per_minute=200, -- unidades que o transformador ganha de volta por minuto
-    x=471.25631713867,y=-1685.3825683594,z=29.381580352783, -- pos
+    x=1391.8166503906,y=3606.0895996094,z=38.941921234131, -- pos 1391.8166503906,3606.0895996094,38.941921234131
     radius=5.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Processar"] = { -- action name
@@ -313,6 +313,28 @@ cfg.item_transformers = {
 		},
         products={ -- items given per unit
 		  ["dirty_money"] = 1250
+        }
+      }
+    }
+  },
+  {
+    name="Biqueira de Cocaína", -- menu name
+    permissions = {"process.cocaina"}, -- you can add permissions
+    r=0,g=200,b=0, -- cor do menu
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
+    x=2197.8620605469,y=86.609718322754,z=228.79986572266, -- pos 2197.8620605469,86.609718322754,228.79986572266
+    radius=4.5, height=1.5, -- area
+    recipes = { -- items do menu
+      ["Vender"] = { -- action name
+        description="Vender Maconha.", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={  -- items taken per unit
+          ["cocaina"] = 5
+		},
+        products={ -- items given per unit
+		  ["dirty_money"] = 1125
         }
       }
     }

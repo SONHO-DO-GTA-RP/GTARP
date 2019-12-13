@@ -147,17 +147,17 @@ cfg.delivery = {
       ["gocagola"] = {0,20,48}
     }
   },
-  ["mission.delivery.weed"] = {
-    chance = 5,
-    items = {
-      ["cannabis"] = {10,20,200},
-    },
-    positions = {
-	  {-1172.09387207031,-1571.91198730469,4.66362237930298},
-      {127.275039672852,-1283.83703613281,29.278923034668},
-	  {-88.0348663330078,-83.0567474365234,57.8084182739258}
-	}
-  },
+  -- ["mission.delivery.weed"] = {
+  --   chance = 5,
+  --   items = {
+  --     ["cannabis"] = {10,20,200},
+  --   },
+  --   positions = {
+	--   {-1172.09387207031,-1571.91198730469,4.66362237930298},
+  --     {127.275039672852,-1283.83703613281,29.278923034668},
+	--   {-88.0348663330078,-83.0567474365234,57.8084182739258}
+	-- }
+  -- },
   ["mission.delivery.cocaina"] = {
     chance = 5,
     items = {
@@ -180,13 +180,13 @@ cfg.delivery = {
       {-88.0348663330078,-83.0567474365234,57.8084182739258}
     }
   },  
-  ["mission.delivery.pot"] = {
-    chance = 5,
-    positions = common_delivery_positions,
-    items = {
-      ["cannabis"] = {10,20,200},
-    }
-  },
+  -- ["mission.delivery.pot"] = {
+  --   chance = 5,
+  --   positions = common_delivery_positions,
+  --   items = {
+  --     ["cannabis"] = {10,20,200},
+  --   }
+  -- },
   ["mission.delivery.pot2"] = {
     chance = 5,
     positions = common_delivery_positions,
