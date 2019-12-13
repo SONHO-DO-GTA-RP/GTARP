@@ -293,36 +293,15 @@ cfg.item_transformers = {
 		  ["cannabis"] = 1
         }
       }
-    },
-    {
-    name="Processar Maconha", -- menu name
-    permissions = {"process.weed"}, -- you can add permissions
-    r=0,g=200,b=0, -- cor do menu
-    max_units=20000, -- unidades maximas do item
-    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
-    x=3818.8391113281,y=4442.521484375,z=2.8076543807983, -- pos 
-    radius=8.5, height=1.5, -- area
-    recipes = { -- items do menu
-      ["Processar"] = { -- action name
-        description="Processador de Maconha.", -- action description
-        in_money=0, -- money taken per unit
-        out_money=0, -- money earned per unit
-        reagents={  -- items taken per unit
-          ["weed"] = 2
-		    },
-        products={ -- items given per unit
-		  ["cannabis"] = 1
-        }
-      }
     }
   },
   {
     name="Biqueira de Maconha", -- menu name
-    permissions = {"sell.weed"}, -- you can add permissions
+    permissions = {"process.weed"}, -- you can add permissions
     r=0,g=200,b=0, -- cor do menu
     max_units=20000, -- unidades maximas do item
     units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
-    x=1662.2940673828,y=-47.983768463135,z=168.3123626709, -- pos 1662.2940673828,-47.983768463135,168.3123626709
+    x=1662.2940673828,y=-47.983768463135,z=168.3123626709, -- pos 1662.2940673828,-47.983768463135,168.3123626709 
     radius=8.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Vender"] = { -- action name
@@ -331,16 +310,14 @@ cfg.item_transformers = {
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
           ["cannabis"] = 5
-		    },
+		},
         products={ -- items given per unit
 		  ["dirty_money"] = 1250
         }
       }
     }
   }
-}
-
-
+} -- cfg.item_transformers = {}
 
 -- define multiple static transformers with postions list
 local weedplants = {
