@@ -385,7 +385,7 @@ cfg.slot_types = {
 
 -- define home clusters
 cfg.homes = {
-  ["Apartamento Simples 1"] = {
+  ["Apartamento Simples"] = {
     slot = "basic_flat",
     entry_point = {-618.73333740234,37.5940284729,43.591003417969},
     buy_price = 130000,
@@ -394,7 +394,7 @@ cfg.homes = {
     blipid=476,
     blipcolor=4
   },
-  ["Apartamento Simples 2"] = {
+  ["Apartamento Simples"] = {
     slot = "basic_flat",
     entry_point = {-1446.769,-538.531,34.740},
     buy_price = 130000,
@@ -403,7 +403,7 @@ cfg.homes = {
     blipid=476,
     blipcolor=4
   },
-  ["Casa 1"] = {
+  ["Casa"] = {
     slot = "casa1_flat",
     entry_point = {-175.11683654785,502.34225463867,137.42016601563},
     buy_price = 280000,
@@ -412,7 +412,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=5
   },
-  ["Casa 2"] = {
+  ["Casa"] = {
     slot = "casa2_flat",
     entry_point = {346.84008789063,440.90414428711,147.70207214355},
     buy_price = 280000,
@@ -421,7 +421,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=5
   },
-  ["Casa 3"] = {
+  ["Casa"] = {
     slot = "casa3_flat",
     entry_point = {373.43969726563,427.83197021484,145.68418884277},
     buy_price = 280000,
@@ -430,7 +430,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=5
   },
-  ["Casa 4"] = {
+  ["Casa"] = {
     slot = "casa4_flat",
     entry_point = {-686.41821289063,596.54180908203,143.64221191406},
     buy_price = 280000,
@@ -439,7 +439,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=5
   },
-  ["Casa 5"] = {
+  ["Casa"] = {
     slot = "casa5_flat",
     entry_point = {-1294.3278808594,454.73611450195,97.506507873535},
     buy_price = 280000,
@@ -466,7 +466,7 @@ cfg.homes = {
     blipid=475,
     blipcolor=5
   },
-  ["Barraco 1"] = {
+  ["Barraco"] = {
     slot = "favela_1",
     entry_point = {1249.9307861328,-270.6506652832,76.681861877441},
     buy_price = 10000,
@@ -475,7 +475,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 2"] = {
+  ["Barraco"] = {
     slot = "favela_2",
     entry_point = {1260.5299072266,-269.07165527344,78.882820129395},
     buy_price = 10000,
@@ -484,7 +484,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 3"] = {
+  ["Barraco"] = {
     slot = "favela_3",
     entry_point = {1321.0428466797,-184.47480773926,107.95357513428},
     buy_price = 10000,
@@ -493,7 +493,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 4"] = {
+  ["Barraco"] = {
     slot = "favela_4",
     entry_point = {1329.5178222656,-176.14810180664,109.34004211426},
     buy_price = 10000,
@@ -502,7 +502,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 1"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_5",
     entry_point = {1462.9799804688,-111.24215698242,140.26052856445},
     buy_price = 30000,
@@ -511,7 +511,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 2"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_6",
     entry_point = {1575.4733886719,-69.406242370605,160.28507995605},
     buy_price = 30000,
@@ -520,7 +520,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 3"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_7",
     entry_point = {1582.4139404297,-68.179763793945,161.34761047363},
     buy_price = 30000,
@@ -529,7 +529,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 4"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_8",
     entry_point = {1588.9260253906,-69.155158996582,162.10125732422},
     buy_price = 30000,
@@ -538,7 +538,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 5"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_9",
     entry_point = {1612.6208496094,-72.160293579102,164.32574462891},
     buy_price = 30000,
@@ -547,7 +547,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco Cobertura 6"] = {
+  ["Barraco Cobertura"] = {
     slot = "favela_10",
     entry_point = {2226.150390625,155.61592102051,224.19395446777},
     buy_price = 30000,
@@ -556,7 +556,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 5"] = {
+  ["Barraco"] = {
     slot = "favela_11",
     entry_point = {2369.7048339844,260.09591674805,188.69671630859},
     buy_price = 10000,
@@ -565,7 +565,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 6"] = {
+  ["Barraco"] = {
     slot = "favela_12",
     entry_point = {2389.1584472656,380.56463623047,175.38191223145},
     buy_price = 10000,
@@ -574,7 +574,7 @@ cfg.homes = {
     blipid=40,
     blipcolor=1
   },
-  ["Barraco 7"] = {
+  ["Barraco"] = {
     slot = "favela_13",
     entry_point = {2387.6176757813,395.11785888672,174.09223937988},
     buy_price = 10000,
