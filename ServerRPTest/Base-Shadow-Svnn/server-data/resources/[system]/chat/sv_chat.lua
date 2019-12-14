@@ -12,7 +12,7 @@ AddEventHandler('_chat:messageEntered', function(author, color, message)
         return
     end
 
-    TriggerEvent('chatMessage', source, author, message)
+    TriggerEvent('chatMessage', message)
 
     if not WasEventCanceled() then
         TriggerClientEvent('chatMessage', -1, author,  { 255, 255, 255 }, message)
