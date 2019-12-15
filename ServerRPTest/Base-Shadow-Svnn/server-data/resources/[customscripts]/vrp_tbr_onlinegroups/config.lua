@@ -22,33 +22,17 @@ cfg.key = {
 --The groups to show to the players in the following format:
 --[DISPLAY NAME] = {vRP GROUPS LIST}
 cfg.groups = {
-    ["Police"] = {
+    ["Policia Militar"] = {
         "police-recruit",
         "police-sergeant",
         "police-lieutenant",
-    },
-    ["Cartel"] = {
-	    "cartel.lider",
-        "cartel.right.arm",
-        "cartel.soldier",
-    },
-    ["El Locos"] = {
-	    "ellocos.lider",
-        "ellocos.right.arm",
-        "ellocos.soldier",
-    },
-    ["Paramedic"] = {
+      },
+    ["Paramédico"] = {
 	    "samu-paramedico",
 		"samu-medico",
         "samu-diretor",
     },
-	["VIP"] = {
-        "vip-platinum",
-        "vip-gold",
-        "vip-silver",
-        "vip-bronze",
-    },
-    ["Mechanic"] = {"mechanic"},
-    ["Lawyer"] = {"lawyer"},
-	["Admin"] = {"admin"},
+    ["Mecânico"] = {"mechanic"},
+    ["Taxi"] = {"taxi"},
+    ["Admin"] = {"admin"},
 }
