@@ -1,20 +1,8 @@
 description 'chat management stuff'
 
-dependency "vrp"
-
-server_scripts{ 
-  "@vrp/lib/utils.lua",
-  "server.lua"
-}
-
-client_scripts{ 
-  "client.lua"
-}
-
 ui_page 'html/index.html'
 
 client_script 'cl_chat.lua'
-
 server_script 'sv_chat.lua'
 
 files {
