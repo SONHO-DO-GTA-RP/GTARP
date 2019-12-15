@@ -23,14 +23,14 @@ cfg.key = {
 --[DISPLAY NAME] = {vRP GROUPS LIST}
 cfg.groups = {
     ["Policia Militar"] = {
-        "police-recruit",
-        "police-sergeant",
-        "police-lieutenant",
+        "police",
+        "police",
+        "police",
       },
     ["Paramédico"] = {
-	    "samu-paramedico",
-		"samu-medico",
-        "samu-diretor",
+	    "samu",
+		"samu",
+        "samu",
     },
     ["Mecânico"] = {"mechanic"},
     ["Taxi"] = {"taxi"},
