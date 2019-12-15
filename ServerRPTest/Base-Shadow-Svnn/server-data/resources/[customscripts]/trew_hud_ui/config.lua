@@ -31,10 +31,10 @@ Config.voice = {
 
 Config.vehicle = {
 	speedUnit = 'KMH',
-	maxSpeed = 240,
+	maxSpeed = 280,
 
 	keys = {
-		seatbelt 	= 'K',
+		seatbelt 	= 'M',
 		cruiser		= 'CAPS',
 		signalLeft	= 'LEFT',
 		signalRight	= 'RIGHT',
@@ -61,7 +61,7 @@ Config.ui = {
 	showHunger 			= true,
 	showThirst	 		= true,
 
-	showMinimap			= false,
+	showMinimap			= true,
 
 	showWeapons			= true,
 	
