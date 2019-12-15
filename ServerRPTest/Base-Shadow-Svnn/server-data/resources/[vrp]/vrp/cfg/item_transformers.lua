@@ -65,7 +65,7 @@ cfg.item_transformers = {
     max_units=20000,
     units_per_minute=2000,
     x=2208.777,y=5578.235,z=53.735, -- pos
-    radius=10.0, height=1.5, -- area
+    radius=3.5, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- action name
         description="Colher maconha.", -- action description
@@ -80,16 +80,16 @@ cfg.item_transformers = {
   },
   -- CAMPO DE METANFETAMINA    
   {
-    name="Campo de Metanfetamina", -- Nome do menu
+    name="Carregamento de Melamina", -- Nome do menu
     permissions = {"harvest.metanfetamina"}, -- Você pode adicionar permissões
     r=0,g=200,b=0, -- cor
     max_units=20000,
     units_per_minute=2000,
-    x=79.686859130859,y=3705.6840820313,z=41.077156066895, -- Localização
-    radius=10.0, height=1.5, -- area
+    x=-849.62231445313,y=-2684.3493652344,z=13.912050247192, -- Localização -849.62231445313,-2684.3493652344,13.912050247192
+    radius=4.5, height=1.5, -- area
     recipes = {
-      ["Colher"] = { -- Nome da ação
-        description="Colher Crystal Melamine.", -- Descrição do produto a se colher
+      ["Receber"] = { -- Nome da ação
+        description="Receber Cristal de Melamina.", -- Descrição do produto a se colher
         in_money=0, -- Dinheiro dado por unidade
         out_money=0, -- Dinheiro ganho por unidade
         reagents={}, -- Itens colhidos por unidade
@@ -107,7 +107,7 @@ cfg.item_transformers = {
     max_units=20000, -- unidades maximas do item
     units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
     x=1316.8662109375,y=-450.48968505859,z=69.512893676758, -- pos
-    radius=7.5, height=1.5, -- area
+    radius=4.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Processar"] = { -- action name
         description="Processador de Metanfetamina.", -- action description
@@ -130,7 +130,7 @@ cfg.item_transformers = {
     max_units=200,
     units_per_minute=5,
     x=701.15313720703,y=4171.8642578125,z=41.15034866333, -- Localização 701.15313720703,4171.8642578125,41.15034866333
-    radius=6.5, height=1.5, -- area
+    radius=5.5, height=1.5, -- area
     recipes = {
       ["Colher"] = { -- Nome da ação
         description="Colher folha de Coca.", -- Descrição do produto a se colher
@@ -332,6 +332,28 @@ cfg.item_transformers = {
         out_money=0, -- money earned per unit
         reagents={  -- items taken per unit
           ["cocaina"] = 5
+		},
+        products={ -- items given per unit
+		  ["dirty_money"] = 1125
+        }
+      }
+    }
+  },
+  {
+    name="Biqueira de Metanfetamina", -- menu name
+    permissions = {"process.metanfetamina"}, -- you can add permissions
+    r=0,g=200,b=0, -- cor do menu
+    max_units=20000, -- unidades maximas do item
+    units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
+    x=1315.83984375,y=-151.60313415527,z=118.23488616943, -- pos 1315.83984375,-151.60313415527,118.23488616943
+    radius=2.5, height=1.5, -- area
+    recipes = { -- items do menu
+      ["Vender"] = { -- action name
+        description="Vender Metanfetamina", -- action description
+        in_money=0, -- money taken per unit
+        out_money=0, -- money earned per unit
+        reagents={  -- items taken per unit
+          ["metanfetamina"] = 5
 		},
         products={ -- items given per unit
 		  ["dirty_money"] = 1125
