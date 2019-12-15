@@ -15,7 +15,7 @@ AddEventHandler('_chat:messageEntered', function(author, color, message)
     TriggerEvent('chatMessage', message)
 
     if not WasEventCanceled() then
-        TriggerEvent("vrp-chat:chat_message",source,author,message)
+        TriggerClientEvent('chatMessage', -1, author,  { 255, 255, 255 }, message)
     end
 
     print(author .. ': ' .. message)
