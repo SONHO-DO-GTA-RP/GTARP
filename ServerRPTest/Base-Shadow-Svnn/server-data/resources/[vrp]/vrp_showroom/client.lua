@@ -41,7 +41,7 @@ local vehshop = {
 			name = "Automoveis",
 			buttons = {
 				{name = "Populares", description = ''},
-				-- {name = "coupes", description = ''},
+				{name = "Esportivos", description = ''},
 				-- {name = "sedans", description = ''},
 				-- {name = "sports", description = ''},
 				-- {name = "sportsclassics", description = ''},
@@ -66,24 +66,33 @@ local vehshop = {
 				-- {name = "Rhapsody", costs = 120000, description = {}, model = "rhapsody"},
 			}
 		},
-		["coupes"] = {
-			title = "coupes",
-			name = "coupes",
+		["Esportivos"] = {
+			title = "Esportivos",
+			name = "Esportivos",
 			buttons = {
-				{name = "Cognoscenti Cabrio", costs = 180000, description = {}, model = "cogcabrio"},
-				{name = "Exemplar", costs = 200000, description = {}, model = "exemplar"},
-				{name = "F620", costs = 80000, description = {}, model = "f620"},
-				{name = "Felon", costs = 90000, description = {}, model = "felon"},
-				{name = "Felon GT", costs = 95000, description = {}, model = "felon2"},
-				{name = "Jackal", costs = 60000, description = {}, model = "jackal"},
-				{name = "Oracle", costs = 80000, description = {}, model = "oracle"},
-				{name = "Oracle XS", costs = 82000, description = {}, model = "oracle2"},
-				{name = "Sentinel", costs = 90000, description = {}, model = "sentinel"},
-				{name = "Sentinel XS", costs = 60000, description = {}, model = "sentinel2"},
-				{name = "Windsor", costs = 800000, description = {}, model = "windsor"},
-				{name = "Windsor Drop", costs = 850000, description = {}, model = "windsor2"},
-				{name = "Zion", costs = 60000, description = {}, model = "zion"},
-				{name = "Zion Cabrio", costs = 65000, description = {}, model = "zion2"},
+				{name = "Nissan GTR", costs = 180000, description = {}, model = "gtr"}, 
+				{name = "Nissan Skyline", costs = 200000, description = {}, model = "skyline"},
+				{name = "Audi R8", costs = 80000, description = {}, model = "r8ppi"},
+				{name = "BMW Z4", costs = 90000, description = {}, model = "z4alchemist"},
+				{name = "Nissan 370z", costs = 95000, description = {}, model = "370z"},
+				{name = "Audi rs7", costs = 60000, description = {}, model = "rs7"},
+				{name = "BMW M5", costs = 80000, description = {}, model = "m5e60 "},
+				{name = "Chevrolet Corvet C7", costs = 82000, description = {}, model = "c7"},
+				{name = "BMW i8", costs = 90000, description = {}, model = "i8"},
+				{name = "Porsche Cayenne", costs = 60000, description = {}, model = "pcs18"},
+				{name = "Mercedes GL63", costs = 800000, description = {}, model = "gl63"},
+				{name = "Lancer Evolution X", costs = 850000, description = {}, model = "evo10"},
+				{name = "BMW M6F13", costs = 60000, description = {}, model = "m6f13"},
+				{name = "Lancer evolution IX", costs = 65000, description = {}, model = "evo9"},
+				{name = "Mercedes CLS6.3", costs = 65000, description = {}, model = "cls2015 "},
+				{name = "Bentley continental", costs = 65000, description = {}, model = "bcgt"},
+				{name = "Audi S5", costs = 65000, description = {}, model = "s5"},
+				{name = "Lamborghini Urus", costs = 65000, description = {}, model = "urus"},
+				{name = "Mazda RX7", costs = 65000, description = {}, model = "rx7veilside"},
+				{name = "GMC Yukon", costs = 65000, description = {}, model = "gmcyd"},
+				{name = "Aston Martin Vantage", costs = 65000, description = {}, model = "vantage"},
+				{name = "Mercedes A45AMG", costs = 65000, description = {}, model = "a45amg"},
+				{name = "JEEP SRT8", costs = 65000, description = {}, model = "srt8"},
 			}
 		},
 		["sports"] = {
@@ -510,14 +519,14 @@ Citizen.CreateThread(function()
 					end
 					vehSR_drawMenuButton(button,vehshop.menu.x,y,selected)
 					if button.costs ~= nil then
-						if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "coupes" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
+						if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "Esportivos" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
 							vehSR_drawMenuRight(button.costs.."$",vehshop.menu.x,y,selected)
 						else
 							vehSR_drawMenuButton(button,vehshop.menu.x,y,selected)
 						end
 					end
 					y = y + 0.04
-					if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "coupes" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
+					if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "Esportivos" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
 						if selected then
 							if fakecar.model ~= button.model then
 								if DoesEntityExist(fakecar.car) then
@@ -652,8 +661,8 @@ function vehSR_ButtonSelected(button)
 			vehSR_OpenMenu('sedans')
 		elseif btn == "Populares" then
 			vehSR_OpenMenu('Populares')
-		elseif btn == "coupes" then
-			vehSR_OpenMenu('coupes')
+		elseif btn == "Esportivos" then
+			vehSR_OpenMenu('Esportivos')
 		elseif btn == "sportsclassics" then
 			vehSR_OpenMenu("sportsclassics")
 		elseif btn == "supers" then
@@ -667,7 +676,7 @@ function vehSR_ButtonSelected(button)
 		elseif btn == "vans" then
 			vehSR_OpenMenu('vans')
 		end
-	elseif this == "Populares" or this == "coupes" or this == "sedans" or this == "sports" or this == "sportsclassics" or this == "supers" or this == "muscle" or this == "offroad" or this == "suvs" or this == "vans" or this == "industrial" then
+	elseif this == "Populares" or this == "Esportivos" or this == "sedans" or this == "sports" or this == "sportsclassics" or this == "supers" or this == "muscle" or this == "offroad" or this == "suvs" or this == "vans" or this == "industrial" then
 		TriggerServerEvent('veh_SR:CheckMoneyForVeh',button.model,button.costs, "car")
     elseif this == "cycles" or this == "Motocicletas" then
 		TriggerServerEvent('veh_SR:CheckMoneyForVeh',button.model,button.costs, "bike")
@@ -706,7 +715,7 @@ function vehSR_Back()
 	backlock = true
 	if vehshop.currentmenu == "Principal" then
 		vehSR_CloseCreator("","")
-	elseif vehshop.currentmenu == "Populares" or vehshop.currentmenu == "coupes" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
+	elseif vehshop.currentmenu == "Populares" or vehshop.currentmenu == "Esportivos" or vehshop.currentmenu == "sedans" or vehshop.currentmenu == "sports" or vehshop.currentmenu == "sportsclassics" or vehshop.currentmenu == "supers" or vehshop.currentmenu == "muscle" or vehshop.currentmenu == "offroad" or vehshop.currentmenu == "suvs" or vehshop.currentmenu == "vans" or vehshop.currentmenu == "industrial" or vehshop.currentmenu == "cycles" or vehshop.currentmenu == "Motocicletas" then
 		if DoesEntityExist(fakecar.car) then
 			Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
 		end
