@@ -25,5 +25,5 @@ INTERIORS = {
     
     -- Biqueira de Meta
     [30] = {id = 30, x = 1317.4619140625, y = -152.14596557617, z = 111.47811889648, name = "Entrar na Biqueira de Meta", destination = {31}},
-    [31] = {id = 31, x = 1313.3186035156, y = -148.83964538574, z = 118.2370223999, name = "Sair da Biqueira", destination = {30}}
+    [31] = {id = 31, x = 1313.3186035156, y = -148.83964538574, z = 118.2370223999, name = "Sair da Biqueira", destination = {30}},
 }
