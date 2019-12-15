@@ -15,7 +15,8 @@ cfg.groups = {
     "player.group.add",
     "player.group.remove",
     "player.givemoney",
-    "player.giveitem"
+    "player.giveitem",
+    "admin.blips"
   },
   ["admin"] = {
     "admin.tickets",
