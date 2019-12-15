@@ -136,17 +136,17 @@ cfg.groups = {
 	  "mission.taxi.passenger",
 	  "taxi.garagem"
   },
-  ["Entregador"] = {
-    _config = { gtype = "job" },
-	  "delivery.paycheck",
-	  "delivery.service",
-    "mission.delivery.food",
-	  "delivery.garagem"
-  },
-  ["Ladrão de Carros"] = {
-    _config = { gtype = "job" },
-    "mission.carjack.vehicle"
-  },
+  -- ["Entregador"] = {
+  --   _config = { gtype = "job" },
+	--   "delivery.paycheck",
+	--   "delivery.service",
+  --   "mission.delivery.food",
+	--   "delivery.garagem"
+  -- },
+  -- ["Ladrão de Carros"] = {
+  --   _config = { gtype = "job" },
+  --   "mission.carjack.vehicle"
+  -- },
   -- ["Traficante de Maconha"] = {
   --   _config = { gtype = "job" },
 	-- "harvest.weed",
@@ -154,21 +154,29 @@ cfg.groups = {
 	-- "mission.delivery.weed",
 	-- "mission.delivery.pot"
   -- },
-  ["Traficante de Metanfetamina"] = {
+  ["Comando Vermelho"] = {
     _config = { gtype = "job" },
 	"harvest.metanfetamina",
 	"process.metanfetamina",
 	"mission.delivery.metanfetamina",
 	"mission.delivery.pot3"
   },  
-  ["Traficante de Cocaina"] = {
+  ["Los Zetas"] = {
     _config = { gtype = "job" },
 	"process.cocaina",
 	"harvest.cocaina",
 	"mission.delivery.cocaina",
 	"mission.delivery.pot2"
   },  
-  ["Traficante de Armas"] = {
+  ["Yakuza"] = {
+    _config = { gtype = "job" },
+	"build.gun",
+	"mission.delivery.pistol",
+	"mission.delivery.shotgun",
+	"mission.delivery.smg",
+	"mission.gunrunner.shipment"
+  },
+  ["Mafia Italiana"] = {
     _config = { gtype = "job" },
 	"build.gun",
 	"mission.delivery.pistol",
@@ -182,6 +190,11 @@ cfg.groups = {
     "-hitman.addbounty",
 	"-player.blips",
 	"mission.hitman"
+  },
+  ["Uber Eats"] = {
+    _config = { gtype = "job" },
+  "mission.ubereats"
+  "uber.paycheck"
   },
   ["hacker"] = {
     _config = { gtype = "job" },
@@ -197,16 +210,16 @@ cfg.groups = {
     _config = { gtype = "job" },
 	"advogado.oab",
   },  
-  ["Transportador de Valores"] = {
-    _config = { gtype = "job",
-	onspawn = function(player) vRPclient.notify(player,{"Você é um piloto de carro forte."}) end
-	},
-	"mission.bankdriver.moneybank",
-	"mission.bankdriver.moneybank2",
-	"bankdriver.vehicle",
-	"bankdriver.paycheck",
-	"bankdriver.money"
-  },  
+  -- ["Transportador de Valores"] = {
+  --   _config = { gtype = "job",
+	-- onspawn = function(player) vRPclient.notify(player,{"Você é um piloto de carro forte."}) end
+	-- },
+	-- "mission.bankdriver.moneybank",
+	-- "mission.bankdriver.moneybank2",
+	-- "bankdriver.vehicle",
+	-- "bankdriver.paycheck",
+	-- "bankdriver.money"
+  -- },  
   ["Desempregado"] = {
     _config = { gtype = "job" },
 	"player.paycheck"
@@ -229,22 +242,22 @@ cfg.selectors = {
   ["Agencia de Empregos"] = {
     _config = {x = -268.363739013672, y = -957.255126953125, z = 31.22313880920410, blipid = 351, blipcolor = 47},
 	  "Taxi",
-	  "Transportador de Valores",
+	  -- "Transportador de Valores",
     "Mecânico",
-	  "Entregador",
+	  "Uber Eats",
     "Desempregado"
   },
-  ["Emprego Samu"] = {
-    _config = {x = 275.19491577148, y = -1361.23828125, z = 24.537799835205, blipid = 351, blipcolor = 3},
-	"Paramédico",
-  },  	
-  ["Empregos Ilegais"] = {
-    _config = {x = 707.324462890625, y = -966.986511230469, z = 30.4128551483154, blipid = 351, blipcolor = 49},
-	"Ladrão de Carros",
-	"Traficante de Metanfetamina",
-	"Traficante de Maconha",
-	"Traficante de Cocaina",	
-	"Traficante de Armas"
+  -- ["Emprego Samu"] = {
+  --   _config = {x = 275.19491577148, y = -1361.23828125, z = 24.537799835205, blipid = 351, blipcolor = 3},
+	-- "Paramédico",
+  -- },  	
+  -- ["Empregos Ilegais"] = {
+  --   _config = {x = 707.324462890625, y = -966.986511230469, z = 30.4128551483154, blipid = 351, blipcolor = 49},
+	-- "Ladrão de Carros",
+	-- "Traficante de Metanfetamina",
+	-- "Traficante de Maconha",
+	-- "Traficante de Cocaina",	
+	-- "Traficante de Armas"
   } 
 }
 
