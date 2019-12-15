@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<meta name="description" content="Welcome to ConductRP - Enjoy your time!" /> 
+	<title>IranForCe</title> 
+	<link href="style.css" rel="stylesheet" type="text/css" /> 
+    <link href="colour.css" rel="stylesheet" type="text/css" /> 
+	
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/cycle.js"></script>
+    
+    <script type="text/javascript">
+	$(document).ready(function() {
+
+		$('.audio').prop("volume", 0.5);
+			
+
+		$(window).resize(function(){
+			  $('.core-wrapper').css({
+			   position:'absolute',
+			   left: ($(window).width() 
+				 - $('.core-wrapper').outerWidth())/2,
+			   top: ($(window).height() 
+				 - $('.core-wrapper').outerHeight())/2
+			  });	
+		});
+
+		$(window).resize();
+		
+
+		$('#background-scroll').cycle({ 
+			fx: 'fade',
+			pause: 0, 
+			speed: 1500, //Time to fade into the next image [in milliseconds]
+			timeout: 3500  //Time spent on image [in milliseconds]
+		});
+	});
+    </script>
+    
+
+	</head>
+	
+	<body>
+    
+			<div id="welcome">
+			<p><FONT  style="font-size: 23px">ایران فورس<br/><FONT color="#bfbfbf" style="font-size: 400px"></FONT></p>
+		</div>
+		</div>
+	</body>
+</html>
+
+    <div id="background-scroll">
+    	<div id="bg1"></div>
+        <div id="bg2"></div>
+        <div id="bg3"></div>
+        <div id="bg4"></div>
+        <div id="bg5"></div>
+        <div id="bg6"></div>
+   	</div>
+    
+    <div class="core-wrapper">
+    	
+        <img src="images/logo.png" width="75" height="75" />
+    
+    	<div id="left-items">
+
+            <div class="clear"></div>
+
+        <div id="right-items">
+        	
+            <ul id="rules">
+
+
+            </ul>
+            
+        
+        <div class="clear"></div>
+
+        <div id="bar">
+        	<div id="bar-width" style="width: 0%;"></div>
+       	</div>
+
+        <div id="percentage">
+        	<p></p>
+       	</div>
+
+        <div id="download-item">
+
+      	</div>
+    
+    </div>
+    
+    <script type="text/javascript" src="scripts/main.js"></script>
+
+	</body>
+</html>
