@@ -106,7 +106,7 @@ cfg.item_transformers = {
     r=0,g=200,b=0, -- cor do menu
     max_units=20000, -- unidades maximas do item
     units_per_minute=2000, -- unidades que o transformador ganha de volta por minuto
-    x=1316.8662109375,y=-450.48968505859,z=69.512893676758, -- pos
+    x=1716.1524658203,y=-1621.0361328125,z=117.18465423584, -- pos 1716.1524658203,-1621.0361328125,117.18465423584
     radius=4.5, height=1.5, -- area
     recipes = { -- items do menu
       ["Processar"] = { -- action name
