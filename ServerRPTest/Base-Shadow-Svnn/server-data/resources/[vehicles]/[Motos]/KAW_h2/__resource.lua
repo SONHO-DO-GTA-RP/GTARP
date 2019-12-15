@@ -18,6 +18,6 @@ data_file 'VEHICLE_METADATA_FILE' 'vehicles.meta'
 data_file 'CARCOLS_FILE' 'carcols.meta'
 data_file 'VEHICLE_LAYOUTS_FILE' 'vehiclelayouts.meta'
 data_file 'VEHICLE_SHOP_FILE' 'shop_vehicle.meta'
-data_file 'CARCONTENTUNLOCKS_FILE' 'golfgticontentunlocks.meta'
+data_file 'CARCONTENTUNLOCKS_FILE' 'carcontentunlocks.meta'
 
 client_scripts 'vehicle_names.lua'
