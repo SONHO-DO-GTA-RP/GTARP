@@ -16,7 +16,7 @@ cfg.lang = {
 --https://docs.fivem.net/game-references/controls/
 cfg.key = {
 	input_group = 1,
-	control_index = 213
+	control_index = 57
 }
 
 --The groups to show to the players in the following format:
