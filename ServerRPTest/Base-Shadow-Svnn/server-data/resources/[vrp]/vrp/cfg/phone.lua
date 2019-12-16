@@ -61,15 +61,6 @@ cfg.services = {
     alert_notify = "~y~[Mecanico] Alguem ligou para voce solicitando serviço:~n~~s~",
     notify = "~y~Você chamou um mecanico.",
     answer_notify = "~y~Mecanico está a caminho."
-  },
-  ["Uber Eats"] = {
-    blipid = 280,
-    blipcolor = 5,
-    alert_time = 300,
-    alert_permission = "mission.ubereats",
-    alert_notify = "~y~[Mecanico] Alguem ligou para voce solicitando serviço de entrega:~n~~s~",
-    notify = "~y~Você pediu um Uber Eats.",
-    answer_notify = "~y~O Uber Eats mais próximo está a caminho."
   }
 }
 

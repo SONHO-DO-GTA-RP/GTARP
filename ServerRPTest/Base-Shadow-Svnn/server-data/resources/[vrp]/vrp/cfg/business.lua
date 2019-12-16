@@ -2,14 +2,14 @@
 local cfg = {}
 
 -- minimum capital to open a business
-cfg.minimum_capital = 2000000
+cfg.minimum_capital = 100000
 
 -- capital transfer reset interval in minutes
--- default: reset every 12h
-cfg.transfer_reset_interval = 12*60
+-- default: reset every 24h
+cfg.transfer_reset_interval = 24*60
 
 -- commerce chamber {blipid,blipcolor}
-cfg.blip = {431,70}
+cfg.blip = {431,70} 
 
 -- positions of commerce chambers
 cfg.commerce_chambers = {

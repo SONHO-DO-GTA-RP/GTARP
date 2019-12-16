@@ -20,12 +20,11 @@ cfg.paycheck = { -- ["permission"] = paycheck
   ["police.paycheck"] = 5000,
 --[""] = 0,
   ["emergency.paycheck"] = 6000,
-  ["taxi.paycheck"] = 4500,
+  ["taxi.paycheck"] = 3500,
   ["repair.paycheck"] = 4500,
-  ["bankdriver.paycheck"] = 4500,
+  ["bankdriver.paycheck"] = 4600,
   ["diretorchefe.paycheck"] = 10000,
   ["delivery.paycheck"] = 4500
-  ["uber.paycheck"] = 4500
 }
 
 cfg.bill = { -- ["permission"] = withdrawal
@@ -37,7 +36,6 @@ cfg.bill = { -- ["permission"] = withdrawal
   ["bankdriver.paycheck"] = 220,
   ["diretorchefe.paycheck"] = 2500,
   ["delivery.paycheck"] = 350
-  
 }
 
 return cfg
