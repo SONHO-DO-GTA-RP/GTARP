@@ -1,11 +1,13 @@
 
 local cfg = {}
 
+cfg.default_display = true
+
 -- mission display css
 cfg.display_css = [[
 .div_mission{
   position: absolute;
-  top: 200px;
+  top: 150px;
   right: 5px;
   color: white;
   background-color: rgba(0,0,0,0.75);

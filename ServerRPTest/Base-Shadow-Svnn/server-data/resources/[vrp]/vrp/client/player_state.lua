@@ -1,38 +1,11 @@
+if not vRP.modules.player_state then return end
 
--- periodic player state update
+local PlayerState = class("PlayerState", vRP.Extension)
 
-local state_ready = false
+-- STATIC
 
-AddEventHandler("playerSpawned",function() -- delay state recording
-  state_ready = false
-  
-  Citizen.CreateThread(function()
-    Citizen.Wait(30000)
-    state_ready = true
-  end)
-end)
-
-Citizen.CreateThread(function()
-  while true do
-    Citizen.Wait(30000)
-
-    if IsPlayerPlaying(PlayerId()) and state_ready then
-      local x,y,z = table.unpack(GetEntityCoords(GetPlayerPed(-1),true))
-      vRPserver.ping({})
-      vRPserver.updatePos({x,y,z})
-      vRPserver.updateHealth({tvRP.getHealth()})
-      vRPserver.updateWeapons({tvRP.getWeapons()})
-      vRPserver.updateCustomization({tvRP.getCustomization()})
-    end
-  end
-end)
-
--- WEAPONS
-
--- def
-local weapon_types = {
+PlayerState.weapon_types = {
   "WEAPON_KNIFE",
-  "WEAPON_MARKSMANRIFLE",
   "WEAPON_STUNGUN",
   "WEAPON_FLASHLIGHT",
   "WEAPON_NIGHTSTICK",
@@ -81,17 +54,47 @@ local weapon_types = {
   "WEAPON_FLARE"
 }
 
-function tvRP.getWeaponTypes()
-  return weapon_types
+-- METHODS
+
+function PlayerState:__construct()
+  vRP.Extension.__construct(self)
+
+  self.state_ready = false
+  self.update_interval = 30
+  self.mp_models = {} -- map of model hash
+
+  -- update task
+  Citizen.CreateThread(function()
+    while true do
+      Citizen.Wait(self.update_interval*1000)
+
+      if self.state_ready then
+        local x,y,z = vRP.EXT.Base:getPosition()
+
+        self.remote._update({
+          position = {x=x,y=y,z=z},
+          heading = GetEntityHeading(GetPlayerPed(-1)),
+          weapons = self:getWeapons(),
+          customization = self:getCustomization(),
+          health = self:getHealth(),
+          armour = self:getArmour()
+        })
+      end
+    end
+  end)
 end
 
-function tvRP.getWeapons()
+-- WEAPONS
+
+-- get player weapons 
+-- return map of name => {.ammo}
+function PlayerState:getWeapons()
   local player = GetPlayerPed(-1)
 
   local ammo_types = {} -- remember ammo type to not duplicate ammo amount
 
   local weapons = {}
-  for k,v in pairs(weapon_types) do
+  for k,v in pairs(PlayerState.weapon_types) do
     local hash = GetHashKey(v)
     if HasPedGotWeapon(player,hash) then
       local weapon = {}
@@ -110,7 +113,19 @@ function tvRP.getWeapons()
   return weapons
 end
 
-function tvRP.giveWeapons(weapons,clear_before)
+-- replace weapons (combination of getWeapons and giveWeapons)
+-- weapons: map of name => {.ammo}
+--- ammo: (optional)
+-- return previous weapons
+function PlayerState:replaceWeapons(weapons)
+  local old_weapons = self:getWeapons()
+  self:giveWeapons(weapons, true)
+  return old_weapons
+end
+
+-- weapons: map of name => {.ammo}
+--- ammo: (optional)
+function PlayerState:giveWeapons(weapons, clear_before)
   local player = GetPlayerPed(-1)
 
   -- give weapons to player
@@ -127,6 +142,24 @@ function tvRP.giveWeapons(weapons,clear_before)
   end
 end
 
+-- set player armour (0-100)
+function PlayerState:setArmour(amount)
+  SetPedArmour(GetPlayerPed(-1), amount)
+end
+
+function PlayerState:getArmour()
+  return GetPedArmour(GetPlayerPed(-1))
+end
+
+-- amount: 100-200 ?
+function PlayerState:setHealth(amount)
+  SetEntityHealth(GetPlayerPed(-1), math.floor(amount))
+end
+
+function PlayerState:getHealth()
+  return GetEntityHealth(GetPlayerPed(-1))
+end
+
 --[[
 function tvRP.dropWeapon()
   SetPedDropsWeapon(GetPlayerPed(-1))
@@ -135,35 +168,35 @@ end
 
 -- PLAYER CUSTOMIZATION
 
--- parse part key (a ped part or a prop part)
--- return is_proppart, index
-local function parse_part(key)
-  if type(key) == "string" and string.sub(key,1,1) == "p" then
-    return true,tonumber(string.sub(key,2))
-  else
-    return false,tonumber(key)
-  end
-end
+-- get number of drawables for a specific part
+function PlayerState:getDrawables(part)
+  local args = splitString(part, ":")
+  local index = parseInt(args[2])
 
-function tvRP.getDrawables(part)
-  local isprop, index = parse_part(part)
-  if isprop then
+  if args[1] == "prop" then
     return GetNumberOfPedPropDrawableVariations(GetPlayerPed(-1),index)
-  else
+  elseif args[1] == "drawable" then
     return GetNumberOfPedDrawableVariations(GetPlayerPed(-1),index)
+  elseif args[1] == "overlay" then
+    return GetNumHeadOverlayValues(index)
   end
 end
 
-function tvRP.getDrawableTextures(part,drawable)
-  local isprop, index = parse_part(part)
-  if isprop then
+-- get number of textures for a specific part and drawable
+function PlayerState:getDrawableTextures(part,drawable)
+  local args = splitString(part, ":")
+  local index = parseInt(args[2])
+
+  if args[1] == "prop" then
     return GetNumberOfPedPropTextureVariations(GetPlayerPed(-1),index,drawable)
-  else
+  elseif args[1] == "drawable" then
     return GetNumberOfPedTextureVariations(GetPlayerPed(-1),index,drawable)
   end
 end
 
-function tvRP.getCustomization()
+-- get player skin customization
+-- return custom parts
+function PlayerState:getCustomization()
   local ped = GetPlayerPed(-1)
 
   local custom = {}
@@ -172,20 +205,36 @@ function tvRP.getCustomization()
 
   -- ped parts
   for i=0,20 do -- index limit to 20
-    custom[i] = {GetPedDrawableVariation(ped,i), GetPedTextureVariation(ped,i), GetPedPaletteVariation(ped,i)}
+    custom["drawable:"..i] = {GetPedDrawableVariation(ped,i), GetPedTextureVariation(ped,i), GetPedPaletteVariation(ped,i)}
   end
 
   -- props
   for i=0,10 do -- index limit to 10
-    custom["p"..i] = {GetPedPropIndex(ped,i), math.max(GetPedPropTextureIndex(ped,i),0)}
+    custom["prop:"..i] = {GetPedPropIndex(ped,i), math.max(GetPedPropTextureIndex(ped,i),0)}
+  end
+
+  custom.hair_color = {GetPedHairColor(ped), GetPedHairHighlightColor(ped)}
+
+  for i=0,12 do
+    local ok, index, ctype, pcolor, scolor, opacity = GetPedHeadOverlayData(ped, i)
+    if ok then
+      custom["overlay:"..i] = {index, pcolor, scolor, opacity}
+    end
   end
 
   return custom
 end
 
--- partial customization (only what is set is changed)
-function tvRP.setCustomization(custom) -- indexed [drawable,texture,palette] components or props (p0...) plus .modelhash or .model
-  local exit = TUNNEL_DELAYED() -- delay the return values
+-- set partial customization (only what is set is changed)
+-- custom: indexed customization parts ("foo:arg1:arg2...")
+--- "modelhash": number, model hash
+--- or "model": string, model name
+--- "drawable:<index>": {drawable,texture,palette} ped components
+--- "prop:<index>": {prop_index, prop_texture}
+--- "hair_color": {primary, secondary}
+--- "overlay:<index>": {overlay_index, primary color, secondary color, opacity}
+function PlayerState:setCustomization(custom) 
+  local r = async()
 
   Citizen.CreateThread(function() -- new thread
     if custom then
@@ -193,13 +242,13 @@ function tvRP.setCustomization(custom) -- indexed [drawable,texture,palette] com
       local mhash = nil
 
       -- model
-      if custom.modelhash ~= nil then
+      if custom.modelhash then
         mhash = custom.modelhash
-      elseif custom.model ~= nil then
+      elseif custom.model then
         mhash = GetHashKey(custom.model)
       end
 
-      if mhash ~= nil then
+      if mhash then
         local i = 0
         while not HasModelLoaded(mhash) and i < 10000 do
           RequestModel(mhash)
@@ -207,48 +256,110 @@ function tvRP.setCustomization(custom) -- indexed [drawable,texture,palette] com
         end
 
         if HasModelLoaded(mhash) then
-          -- changing player model remove weapons, so save it
-          local weapons = tvRP.getWeapons()
+          -- changing player model remove weapons, armour and health, so save it
+
+          vRP:triggerEventSync("playerModelSave")
+
+          local weapons = self:getWeapons()
+          local armour = self:getArmour()
+          local health = self:getHealth()
+
           SetPlayerModel(PlayerId(), mhash)
-          tvRP.giveWeapons(weapons,true)
+
+          self:giveWeapons(weapons,true)
+          self:setArmour(armour)
+          self:setHealth(health)
+
+          vRP:triggerEventSync("playerModelRestore")
+
           SetModelAsNoLongerNeeded(mhash)
         end
       end
 
       ped = GetPlayerPed(-1)
 
-      -- parts
+      local is_mp = self.mp_models[GetEntityModel(ped)]
+
+      if is_mp then
+        -- face blend data
+        local face = (custom["drawable:0"] and custom["drawable:0"][1]) or GetPedDrawableVariation(ped,0)
+        SetPedHeadBlendData(ped, face, face, 0, face, face, 0, 0.5, 0.5, 0.0, false)
+      end
+
+      -- drawable, prop, overlay
       for k,v in pairs(custom) do
-        if k ~= "model" and k ~= "modelhash" then
-          local isprop, index = parse_part(k)
-          if isprop then
-            if v[1] < 0 then
-              ClearPedProp(ped,index)
-            else
-              SetPedPropIndex(ped,index,v[1],v[2],v[3] or 2)
-            end
+        local args = splitString(k, ":")
+        local index = parseInt(args[2])
+
+        if args[1] == "prop" then
+          if v[1] < 0 then
+            ClearPedProp(ped,index)
           else
-            SetPedComponentVariation(ped,index,v[1],v[2],v[3] or 2)
+            SetPedPropIndex(ped,index,v[1],v[2],true)
           end
+        elseif args[1] == "drawable" then
+          SetPedComponentVariation(ped,index,v[1],v[2],v[3] or 2)
+        elseif args[1] == "overlay" and is_mp then
+          local ctype = 0
+          if index == 1 or index == 2 or index == 10 then ctype = 1
+          elseif index == 5 or index == 8 then ctype = 2 end
+
+          SetPedHeadOverlay(ped, index, v[1], v[4] or 1.0)
+          SetPedHeadOverlayColor(ped, index, ctype, v[2] or 0, v[3] or 0)
         end
+      end
+
+      if custom.hair_color and is_mp then
+        SetPedHairColor(ped, table.unpack(custom.hair_color))
       end
     end
 
-    exit({})
+    r()
   end)
+
+  return r:wait()
 end
 
--- fix invisible players by resetting customization every minutes
---[[
-Citizen.CreateThread(function()
-  while true do
-    Citizen.Wait(60000)
-    if state_ready then
-      local custom = tvRP.getCustomization()
-      custom.model = nil
-      custom.modelhash = nil
-      tvRP.setCustomization(custom)
+-- EVENT
+
+PlayerState.event = {}
+
+function PlayerState.event:playerDeath()
+  self.state_ready = false
+end
+
+-- TUNNEL
+PlayerState.tunnel = {}
+
+function PlayerState.tunnel:setStateReady(state)
+  self.state_ready = state
+end
+
+function PlayerState.tunnel:setConfig(update_interval, mp_models)
+  self.update_interval = update_interval
+
+  for _, model in pairs(mp_models) do
+    local hash
+    if type(model) == "string" then
+      hash = GetHashKey(model)
+    else
+      hash = model
     end
+
+    self.mp_models[hash] = true
   end
-end)
---]]
+end
+
+PlayerState.tunnel.getWeapons = PlayerState.getWeapons
+PlayerState.tunnel.replaceWeapons = PlayerState.replaceWeapons
+PlayerState.tunnel.giveWeapons = PlayerState.giveWeapons
+PlayerState.tunnel.setArmour = PlayerState.setArmour
+PlayerState.tunnel.getArmour = PlayerState.getArmour
+PlayerState.tunnel.setHealth = PlayerState.setHealth
+PlayerState.tunnel.getHealth = PlayerState.getHealth
+PlayerState.tunnel.getDrawables = PlayerState.getDrawables
+PlayerState.tunnel.getDrawableTextures = PlayerState.getDrawableTextures
+PlayerState.tunnel.getCustomization = PlayerState.getCustomization
+PlayerState.tunnel.setCustomization = PlayerState.setCustomization
+
+vRP:registerExtension(PlayerState)

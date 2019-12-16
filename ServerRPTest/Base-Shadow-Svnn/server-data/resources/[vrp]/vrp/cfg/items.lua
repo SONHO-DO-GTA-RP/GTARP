@@ -1,39 +1,23 @@
--- define items, see the Inventory API on github
 
 local cfg = {}
 
--- see the manual to understand how to create parametric items
--- idname = {name or genfunc, description or genfunc, genfunc choices or nil, weight or genfunc}
--- a good practice is to create your own item pack file instead of adding items here
+-- (see vRP.EXT.Inventory:defineItem)
+-- map of id => {name, description, menu_builder, weight}
+--- name: display name, value or genfunction(args)
+--- description: value or genfunction(args) (html)
+--- menu_builder: (optional) genfunction(args, menu)
+--- weight: (optional) value or genfunction(args)
+--
+-- genfunction are functions returning a correct value as: function(args, ...)
+-- where args is a list of {base_idname,args...}
 cfg.items = {
-  ["weed"] = {"Planta de maconha", "Planta de maconha.", nil, 0.50}, -- no choices
-  ["folhadecoca"] = {"Folha de Coca", "Folha de Coca.", nil, 0.50}, -- no choices
-  ["cocaina"] = {"Cocaina", "Cocaina em po.", nil, 1.00}, -- no choices
-  ["crystalmelamine"] = {"Crystal Melamine", "Crystal Melamine.", nil, 0.50}, -- no choices
-  ["metanfetamina"] = {"Metanfetamina", "Cristal de Metanfetamina.", nil, 1.00}, -- no choices  
-  ["Pedra"] = {"Pedra", "Pedra bruta.", nil, 0.01}, -- no choices
-  ["Minerio"] = {"Minerio", "Minerio refinado.", nil, 0.01}, -- no choices
-  ["portedearma"] = {"Porte de Arma", "licença para arma.", nil, 0.01}, -- no choices
-  ["oab"] = {"OAB", "Carteira de Advogado.", nil, 0.01}, -- no choices
-  ["cannabis"] = {"Maconha", "Processada.", nil, 1.00}, -- no choices
-  ["bank_money"] = {"Dinheiro do Banco", "$.", nil, 0}, -- no choices
+  ["gold_ore"] = {"Gold ore","",nil,1},
+  ["gold_processed"] = {"Gold processed","",nil,1.2},
+  ["gold_ingot"] = {"Gold ingot","",nil,12},
+  ["gold_catalyst"] = {"Gold catalyst","Used to transform processed gold into gold ingot.",nil,0.1},
+  ["weed"] = {"Weed leaf", "", nil, 0.05},
+  ["weed_processed"] = {"Weed processed", "", nil, 0.1},
+  ["demineralized_water"] = {"Demineralized water (1L)","",nil,1}
 }
-
--- load more items function
-local function load_item_pack(name)
-  local items = module("cfg/item/"..name)
-  if items then
-    for k,v in pairs(items) do
-      cfg.items[k] = v
-    end
-  else
-    print("[Brasil RP] Pacote de Itens ["..name.."] não encontrado")
-  end
-end
-
--- PACKS
-load_item_pack("required")
-load_item_pack("food")
-load_item_pack("drugs")
 
 return cfg

@@ -2,16 +2,16 @@
 local cfg = {}
 
 -- city hall position
-cfg.city_hall = {236.872360229492, -408.259490966797, 47.9243659973145}
+cfg.city_hall = {-546.12933349609,-205.25981140137,38.215141296387}
 
--- cityhall blip {blipid,blipcolor}
-cfg.blip = {498,4}
+-- {ent,cfg} will fill cfg.title, cfg.pos
+cfg.city_hall_map_entity = {"PoI", {blip_id = 181, blip_color = 4, marker_id = 1, color = {0,255,125,125}}}
 
 -- cost of a new identity
-cfg.new_identity_cost = 0
+cfg.new_identity_cost = 100
 
 -- phone format (max: 20 chars, use D for a random digit)
-cfg.phone_format = "DD-9DDDDDDD"
+cfg.phone_format = "DDD-DDDD"
 -- cfg.phone_format = "06DDDDDDDD" -- another example for cellphone in France
 
 

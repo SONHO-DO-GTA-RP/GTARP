@@ -1,9 +1,14 @@
 
 local cfg = {}
 
+-- {ent,cfg} will fill cfg.pos, cfg.title
+cfg.pc_map_entity = {"PoI", {marker_id = 1}}
+
 -- PCs positions
 cfg.pcs = {
-  {442.04299926758, -977.76538085938, 30.689607620239}
+  {437.14007568359,-996.31872558594,30.689586639404},
+  {441.97839355469,-978.94622802734,30.689605712891},
+  {459.74328613281,-988.95098876953,24.914869308472}
 }
 
 -- vehicle tracking configuration
@@ -14,19 +19,19 @@ cfg.trackveh = {
 }
 
 -- wanted display
+-- map_entity: {ent,cfg} will fill cfg.player (server id), cfg.title
 cfg.wanted = {
-  blipid = 458,
-  blipcolor = 38,
+  map_entity = {"PlayerMark", {blip_id = 458, blip_color = 38}},
   service = "police"
 }
 
 -- illegal items (seize)
+-- specify list of "idname" or "*idname" to seize all parametric items
 cfg.seizable_items = {
   "dirty_money",
-  "cannabis",
-  "cacaina",
-  "folhadecoca",
-  "weed"
+  "weed",
+  "*wbody",
+  "*wammo"
 }
 
 -- jails {x,y,z,radius}
@@ -38,29 +43,13 @@ cfg.jails = {
 
 -- fines
 -- map of name -> money
---[[cfg.fines = {
-  ["Desacato."] = 0,
-  ["Fuga"] = 2500,
-  ["Sem habilitação"] = 5000,  
-  ["Assalto a Civil"] = 5000,
-  ["Assalto a Civil."] = 0,
-  ["Porte ilegal de arma"] = 10000,
-  ["Porte ilegal de arma."] = 0,
-  ["Tráfico de drogas"] = 10000,
-  ["Tráfico de drogas."] = 0,
-  ["Alta Velocidade"] = 5000,
-  ["Alta Velocidade."] = 0, 
-  ["Direção Perigosa"] = 5000,
-  ["Direção Perigosa."] = 0,
-  ["Ultrapassar sinal vermelho"] = 1000,
-  ["Ultrapassar sinal vermelho."] = 0, 
-  ["Furto/Roubo de veículos."] = 0,
-  ["Poluição Sonora"] = 2500,
-  ["Poluição Sonora."] = 0,
-  ["Assasinato."] = 0,
-  ["Tentativa de homicídio."] = 0,
-  ["Roubo a Banco."] = 0,
-  ["Roubo a Loja."] = 0
-}--]]
+cfg.fines = {
+  ["Insult"] = 100,
+  ["Speeding"] = 250,
+  ["Stealing"] = 1000,
+  ["Organized crime (low)"] = 10000,
+  ["Organized crime (medium)"] = 25000,
+  ["Organized crime (high)"] = 50000
+}
 
 return cfg

@@ -1,49 +1,29 @@
+
 local cfg = {}
 
 -- start wallet/bank values
-cfg.open_wallet = 1000
-cfg.open_bank = 50000
+cfg.open_wallet = 150
+cfg.open_bank = 1000
+
+cfg.lose_wallet_on_death = true
+
+cfg.money_display = true
 
 -- money display css
 cfg.display_css = [[
 .div_money{
   position: absolute;
-  top: 80px;
+  top: 100px;
   right: 20px;
-  font-family: "pcdown";
-  font-size: 1.6em;
+  font-size: 1.3em;
   font-weight: bold;
   color: white;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+  text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.80);
 }
 
 .div_money .symbol{
-  font-size: 1.2em;
-  color: green;
-}
-
-.div_bankmoney{
-  position: absolute;
-  top: 115px;
-  right: 20px;
-  font-family: "pcdown";
-  font-size: 1.6em;
-  font-weight: bold;
-  color: white;
-  text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
-}
-
-.div_bankmoney .symbol{
-  font-size: 1.2em;
-  content: url('https://i.imgur.com/ZNFMaoO.png');
+  font-size: 1.4em;
+  color: #00ac51; 
 }
 ]]
 

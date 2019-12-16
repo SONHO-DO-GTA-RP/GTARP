@@ -3,21 +3,46 @@ local cfg = {}
 
 -- define each group with a set of permissions
 -- _config property:
+--- title (optional): group display name
 --- gtype (optional): used to have only one group with the same gtype per player (example: a job gtype to only have one job)
---- onspawn (optional): function(player) (called when the player spawn with the group)
---- onjoin (optional): function(player) (called when the player join the group)
---- onleave (optional): function(player) (called when the player leave the group)
---- (you have direct access to vRP and vRPclient, the tunnel to client, in the config callbacks)
+--- onspawn (optional): function(user) (called when the character spawn with the group)
+--- onjoin (optional): function(user) (called when the character join the group)
+--- onleave (optional): function(user) (called when the character leave the group)
+
+function police_init(user)
+  local weapons = {}
+  weapons["WEAPON_STUNGUN"] = {ammo=1000}
+  weapons["WEAPON_COMBATPISTOL"] = {ammo=100}
+  weapons["WEAPON_NIGHTSTICK"] = {ammo=0}
+  weapons["WEAPON_FLASHLIGHT"] = {ammo=0}
+  
+  vRP.EXT.PlayerState.remote._giveWeapons(user.source,weapons,true)
+  vRP.EXT.Police.remote._setCop(user.source,true)
+  vRP.EXT.PlayerState.remote._setArmour(user.source,100)
+end
+
+function police_onjoin(user)
+  police_init(user)
+end
+
+function police_onleave(user)
+  vRP.EXT.PlayerState.remote._giveWeapons(user.source,{},true)
+  vRP.EXT.Police.remote._setCop(user.source,false)
+  vRP.EXT.PlayerState.remote._setArmour(user.source,0)
+  user:removeCloak()
+end
+
+function police_onspawn(user)
+  police_init(user)
+end
 
 cfg.groups = {
   ["superadmin"] = {
-    _config = {onspawn = function(player) vRPclient.notify(player,{"Você é um SuperAdmin."}) end},
+    _config = {onspawn = function(user) vRP.EXT.Base.remote._notify(user.source, "You are superadmin.") end},
     "player.group.add",
     "player.group.remove",
     "player.givemoney",
-    "player.giveitem",
-    "admin.blips",
-    "owner.title"
+    "player.giveitem"
   },
   ["admin"] = {
     "admin.tickets",
@@ -30,203 +55,99 @@ cfg.groups = {
     "player.unban",
     "player.noclip",
     "player.custom_emote",
+    "player.custom_model",
     "player.custom_sound",
     "player.display_custom",
     "player.coords",
     "player.tptome",
-	  "admin.deleteveh",
-	  "admin.spawnveh",
-	  "admin.godmode",
-	  "player.tptowaypoint",
-	  "admin.easy_unjail",
-	  "admin.spikes",
-    "player.tpto",
-    "admin.title"
+    "player.tpto"
   },
-  ["moderador"] = {
-    _config = {onspawn = function(player) vRPclient.notify(player,{"Você é um ~r~moderador."}) end},
-    "player.group.add",
-    "player.group.remove",
-	  "player.whitelist",
-	  "player.unwhitelist",
-    "player.noclip",
-    "player.tptome",
-    "player.list",
-    "player.kick",
-    "player.tpto",
-    "mod.title"
-  },   
-  -- the group user is auto added to all logged players
+  ["god"] = {
+    "admin.god" -- reset survivals/health periodically
+  },
   ["user"] = {
-    "police.menu",
     "player.phone",
-	  "player.loot",
-	  "player.store_armor",
-	  "player.fix_haircut",
-    "player.player_menu",
-    "player.store_money",
-    "player.store_weapons",
-    "player.check",
-    "police.check",
     "player.calladmin",
-	  "emergency_heal",
+    "player.store_weapons",
     "police.seizable" -- can be seized
-  }, 
-  ["Policia Militar"] = {
-    _config = { 
+  },
+  ["police"] = {
+    _config = {
+      title = "Police",
       gtype = "job",
-      onjoin = function(player) vRPclient.setCop(player,{true}) end,
-      onspawn = function(player) vRPclient.setCop(player,{true}) end,
-      onleave = function(player) vRPclient.setCop(player,{false}) end
+      onjoin = police_onjoin,
+      onspawn = police_onspawn,
+      onleave = police_onleave
     },
-    "player.group.add",
-    "player.group.remove",
-    "player.list",
-	  "police.easy_jail",
-	  "police.easy_unjail",
-	  "police.easy_fine",
-	  "police.easy_cuff",
-	  "police.drag",
     "police.menu",
+    "police.askid",
     "police.cloakroom",
     "police.pc",
-	  "pm2.garagem",
     "police.handcuff",
+    "police.drag",
     "police.putinveh",
     "police.getoutveh",
     "police.check",
     "police.service",
     "police.wanted",
-    "police.seize.weapons",
-    "police.seize.items",
+    "police.seize",
     "police.jail",
     "police.fine",
     "police.announce",
-	  "police.askid",
-	  "police.paycheck",
-	  "mission.police.transfer",
-    "mission.police.patrol",
-	  "police.weapons",
-    "-police.store_weapons",
+    "police.vehicle",
+    "police.chest_seized",
+    "-player.store_weapons",
     "-police.seizable" -- negative permission, police can't seize itself, even if another group add the permission
+--    "mission.paycheck.police" -- basic mission
   },
-  ["Paramédico"] = {
-    _config = { gtype = "job" },
+  ["emergency"] = {
+    _config = {
+      title = "Emergency",
+      gtype = "job"
+    },
     "emergency.revive",
     "emergency.shop",
-	  "emergency_heal",
     "emergency.service",
-	  "hospital.garagem",
-	  "emergency.medkit",
-	  "emergency.paycheck",
-	  "mission.emergency.transfer",
-	  "samu.cloakroom"
+    "emergency.vehicle",
+    "emergency.cloakroom"
   },
-  ["Mecânico"] = {
-    _config = { gtype = "job"},
+  ["repair"] = {
+    _config = {
+      title = "Repair",
+      gtype = "job"
+    },
     "vehicle.repair",
     "vehicle.replace",
-	  "repair.paycheck",
-	  "mission.repair.satellite_dishes",
-	  "mission.repair.wind_turbines",
-    "repair.service",
-	  "repair.garagem"
+    "repair.service"
+--    "mission.repair.satellite_dishes", -- basic mission
+--    "mission.repair.wind_turbines" -- basic mission
   },
-  ["Uber"] = {
-    _config = { gtype = "job" },
+  ["taxi"] = {
+    _config = {
+      title = "Taxi",
+      gtype = "job"
+    },
     "taxi.service",
-	  "taxi.paycheck",
-	  "mission.taxi.passenger",
-	  "taxi.garagem"
+    "taxi.vehicle"
   },
-  ["Entregador"] = {
-    _config = { gtype = "job" },
-	  "delivery.paycheck",
-	  "delivery.service",
-    "mission.delivery.food",
-	  "delivery.garagem"
-  },
-  ["Ladrão de Carros"] = {
-    _config = { gtype = "job" },
-    "mission.carjack.vehicle"
-  },
-  -- ["Traficante de Maconha"] = {
-  --   _config = { gtype = "job" },
-	-- "harvest.weed",
-	-- "process.weed",
-	-- "mission.delivery.weed",
-	-- "mission.delivery.pot"
-  -- },
-  ["Comando Vermelho"] = {
-    _config = { gtype = "job" },
-	"harvest.metanfetamina",
-	"process.metanfetamina",
-	"mission.delivery.metanfetamina",
-	-- "mission.delivery.pot3"
-  },  
-  ["Los Zetas"] = {
-    _config = { gtype = "job" },
-	"process.cocaina",
-	"harvest.cocaina",
-	"mission.delivery.cocaina",
-	-- "mission.delivery.pot2"
-  },  
-  ["Yakuza"] = {
-    _config = { gtype = "job" },
-	"build.gun",
-	"mission.delivery.pistol",
-	"mission.delivery.shotgun",
-	"mission.delivery.smg",
-	"mission.gunrunner.shipment"
-  },
-  ["Mafia Italiana"] = {
-    _config = { gtype = "job" },
-	"build.gun",
-	"mission.delivery.pistol",
-	"mission.delivery.shotgun",
-	"mission.delivery.smg",
-	"mission.gunrunner.shipment"
-  },
-  ["Assassino Profissional"] = {
-    _config = { gtype = "job" },
-	"hitman.takebounty",
-    "-hitman.addbounty",
-	"-player.blips",
-	"mission.hitman"
-  },
-  ["hacker"] = {
-    _config = { gtype = "job" },
-	"-player.blips",
-	"hacker.hack"
-  },
-  ["mugger"] = {
-    _config = { gtype = "job" },
-	"-player.blips",
-	"mugger.mug"
-  },
-  ["Advogado"] = {
-    _config = { gtype = "job" },
-	"advogado.oab",
-  },  
-  ["Transportador de Valores"] = {
-    _config = { gtype = "job",
-	onspawn = function(player) vRPclient.notify(player,{"Você é um piloto de carro forte."}) end
-	},
-	"mission.bankdriver.moneybank",
-	"mission.bankdriver.moneybank2",
-	"bankdriver.vehicle",
-	"bankdriver.paycheck",
-	"bankdriver.money"
-  },  
-  ["Desempregado"] = {
-    _config = { gtype = "job" },
-	"player.paycheck"
+  ["citizen"] = {
+    _config = {
+      title = "Citizen",
+      gtype = "job"
+    }
   }
 }
 
--- groups are added dynamically using the API or the menu, but you can add group when an user join here
+-- groups are added dynamically using the API or the menu, but you can add group when a character is loaded here
+-- groups for everyone
+cfg.default_groups = {
+  "user"
+}
+
+-- groups per user
+-- map of user id => list of groups
 cfg.users = {
-  [1] = { -- give superadmin and admin group to the first created user on the database
+  [1] = { -- give superadmin and admin group to the first created user in the database
     "superadmin",
     "admin"
   }
@@ -234,29 +155,71 @@ cfg.users = {
 
 -- group selectors
 -- _config
---- x,y,z, blipid, blipcolor, permissions (optional)
+--- x,y,z, map_entity, permissions (optional)
+---- map_entity: {ent,cfg} will fill cfg.title, cfg.pos
 
 cfg.selectors = {
-  ["Agencia de Empregos"] = {
-    _config = {x = -268.363739013672, y = -957.255126953125, z = 31.22313880920410, blipid = 351, blipcolor = 47},
-	  "Taxi",
-	  "Transportador de Valores",
-    "Mecânico",
-	  "Entregador",
-    "Desempregado"
+  ["Jobs"] = {
+    _config = {x = -268.363739013672, y = -957.255126953125, z = 31.22313880920410, map_entity = {"PoI", {blip_id = 351, blip_color = 47, marker_id = 1}}},
+    "taxi",
+    "repair",
+    "citizen"
   },
-  ["Emprego Samu"] = {
-    _config = {x = 275.19491577148, y = -1361.23828125, z = 24.537799835205, blipid = 351, blipcolor = 3},
-	"Paramédico",
-  }  	
-  -- ["Empregos Ilegais"] = {
-  --   _config = {x = 707.324462890625, y = -966.986511230469, z = 30.4128551483154, blipid = 351, blipcolor = 49},
-	-- "Ladrão de Carros",
-	-- "Traficante de Metanfetamina",
-	-- "Traficante de Maconha",
-	-- "Traficante de Cocaina",	
-	-- "Traficante de Armas"
-  -- } 
+  ["Police job"] = {
+    _config = {x = 437.924987792969,y = -987.974182128906, z = 30.6896076202393, map_entity = {"PoI", {blip_id = 351, blip_color = 38, marker_id = 1}}},
+    "police",
+    "citizen"
+  },
+  ["Emergency job"] = {
+    _config = {x=-498.959716796875,y=-335.715148925781,z=34.5017547607422, map_entity = {"PoI", {blip_id = 351, blip_color = 1, marker_id = 1}}},
+    "emergency",
+    "citizen"
+  }
+}
+
+-- identity display gtypes
+-- used to display gtype groups in the identity
+-- map of gtype => title
+cfg.identity_gtypes = {
+  job = "Job"
+}
+
+-- count display
+
+cfg.count_display_interval = 15 -- seconds
+
+cfg.count_display_css = [[
+.div_group_count_display{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+  padding-right: 5px;
+}
+
+.div_group_count_display > div{
+  padding-left: 7px;
+  color: white;
+  font-weight: bold;
+  line-height: 22px;
+}
+
+.div_group_count_display > div > img{
+  margin-right: 2px;
+  vertical-align: bottom;
+}
+]]
+
+-- list of {permission, img_src}
+cfg.count_display_permissions = {
+  {"!group.user", "https://i.imgur.com/tQ2VHAi.png"},
+  {"!group.admin", "https://i.imgur.com/cpSYyN0.png"},
+  {"!group.police", "https://i.imgur.com/dygLDfC.png"},
+  {"!group.emergency", "https://i.imgur.com/K5lXutO.png"},
+  {"!group.repair", "https://i.imgur.com/QEjFgzM.png"},
+  {"!group.taxi", "https://i.imgur.com/yY4yrZN.png"}
 }
 
 return cfg

@@ -13,14 +13,16 @@ local cfg = {}
 ---- max_exp: -1 for infinite exp
 cfg.gaptitudes = {
   ["physical"] = {
-    _title = "Fisico",
-    ["strength"] = {"Força", 30, 550} -- required, level 3 to 6 (by default, can carry 10kg per level)
+    _title = "Physical",
+    ["strength"] = {"Strength", 30, 105} -- required, level 3 to 6 (by default, can carry 10kg per level)
   },
   ["science"] = {
-    _title = "Ciencia",
-    ["produtos químicos"] = {"Estudo de produtos químicos", 0, -1}, -- example
-    ["matematica"] = {"Estudo de Matematica", 0, -1} -- example
+    _title = "Science",
+    ["chemicals"] = {"Study of chemicals", 0, -1}, -- example
+    ["mathematics"] = {"Study of mathematics", 0, -1} -- example
   }
 }
+
+cfg.lose_aptitudes_on_death = true
 
 return cfg

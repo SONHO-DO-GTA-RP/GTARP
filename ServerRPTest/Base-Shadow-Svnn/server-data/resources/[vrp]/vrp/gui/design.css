@@ -10,69 +10,51 @@ html, body {
   overflow: hidden;
 }
 
-.console{
-  background-color: white;
-  color: green;
-  font-weight: bold;
-}
-
 /* menu */
 
 .menu{
-  background-color: rgba(35, 40, 46, 0.5);
-  font-family: 'Roboto', sans-serif;
-  color: #ffffff;
+  background-color: rgba(0,0,0,0.75);
+  color: white;
   width: 250px;
   height: 50%;
   position: absolute;
-  float: left;
   font-weight: bold;
-  border-radius: 7px 7px 7px 7px;
- -moz-border-radius: 7px 7px 7px 7px;
- -webkit-border-radius: 7px 7px 7px 7px;
-  border: 0px solid #000000;
+  top: 75px;
 }
 
 .menu_description{
-  background-color: rgba(35, 40, 46, 0.5);
-  border-radius: 0px 10px 10px 0px;
- -moz-border-radius: 0px 10px 10px 0px;
- -webkit-border-radius: 0px 10px 10px 0px;
-  border: 0px solid #000000;
-  font-family: 'Roboto', sans-serif;
-  color: #ffffff;
+  background-color: rgba(0,0,0,0.75);
+  color: white;
   position: absolute;
   font-weight: bold;
   padding: 9px;
-  font-size: 1.0em;
+  font-size: 1.2em;
   max-width: 500px;
 }
 
 .menu h1{
   background-color: rgba(255,0,0,0.75);
-  font-family: "Comic Sans MS", cursive, sans-serif;
   color: white;
   text-align: center;
   font-size: 1.6em;
   padding: 6px;
-  font-weight: bold;
 }
 
-.choices{
+.options{
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-.choices::-webkit-scrollbar{ 
+.options::-webkit-scrollbar{ 
   display: none; 
 }
 
-.choices div{
+.options > div{
   padding: 6px;
   font-size: 1.3em;
 }
 
-.choices .selected{
+.options .selected{
   background-color: rgba(255,255,255,0.90);
   color: black;
 }
@@ -93,41 +75,59 @@ html, body {
   text-shadow: 2px 2px black;
 }
 
+/* dynamic class progress bar */
+.dprogressbar{
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.dprogressbar .inner{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.dprogressbar .label{
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  vertical-align: middle;
+  top: 0;
+  left: 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px black;
+}
+
 /* wprompt */
 .wprompt{
   position: absolute;
-  background-color: rgba(35, 40, 46, 0.5);
+  background-color: rgba(0,0,0,0.75);
   color: white;
   width: 500px;
   height: 200px;
   display: flex;
   flex-direction: column;
   padding: 5px;
-   border-radius: 7px 7px 7px 7px;
- -moz-border-radius: 7px 7px 7px 7px;
- -webkit-border-radius: 7px 7px 7px 7px;
-  border: 0px solid #000000;
 }
 
 .wprompt h1{
-  font-size: 1.2em;
-  font-family: 'Roboto', sans-serif;
-  color: #FFFFFF;
-  font-family: Roboto;
- }
+  font-size: 1.1em;
+}
 
 .wprompt textarea{
   outline: none !important;
-  background-color: rgba(35, 40, 47, 0.39);
-  font-family: 'Roboto', sans-serif;
+  background-color: rgba(0,0,0,0.75);
+  border: 1px solid rgba(255,255,255,0.30);
   flex: 1;
   color: white;
   width: 100%;
+  padding: 4px;
   resize: none;
-  border-radius: 7px 7px 7px 7px;
- -moz-border-radius: 7px 7px 7px 7px;
- -webkit-border-radius: 7px 7px 7px 7px;
-  border: 0px solid #000000;
+  box-sizing: border-box;
 }
 
 .wprompt textarea:focus{
@@ -135,11 +135,10 @@ html, body {
 }
 
 .wprompt .help{
-  font-size: 1.2em;
-  font-family: 'Roboto', sans-serif;
-  color: #FFFFFF;
-  font-family: Roboto;
- }
+  font-size: 0.9em;
+  font-style: italic;
+  padding: 3px;
+}
 
 /* request manager */
 .request_manager{
@@ -183,11 +182,52 @@ html, body {
   padding: 10px;
   margin-left: -400px;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  font-size: 60px;
+  font-size: 1.1em;
   text-shadow: 2px 2px black;
   color: white;
   display: none;
   opacity: 0.90;
 }
 
+/* VoIP */
+
+#voice_indicator{
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  right: 0;
+  top: 35%;
+  background-image: url("images/voice_active.png");
+  display: none;
+}
+
+#voice_indicator.active{
+  display: block;
+}
+
+/* Radio */
+
+.radio_display{
+  position: absolute;
+  right: 0;
+  top: 15%;
+  margin: 6px;
+  width: 200px;
+}
+
+.radio_display > div{
+  overflow: hidden;
+  margin-top: 3px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 5px;
+  color: white;
+  background-image: linear-gradient(to bottom, rgba(50,50,50,0.75), rgba(0,0,0,0.75));
+}
+
+.radio_display > div > .group{
+  text-decoration: underline;
+}
+
+.radio_display > div > .title{
+}

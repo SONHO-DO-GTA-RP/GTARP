@@ -1,5 +1,27 @@
+-- this file define global tools required by vRP and vRP extensions
+-- it will create module, SERVER, CLIENT, async, class...
+
+-- side detection
+SERVER = IsDuplicityVersion()
+CLIENT = not SERVER
+
+-- table.maxn replacement
+function table_maxn(t)
+  local max = 0
+  for k,v in pairs(t) do
+    local n = tonumber(k)
+    if n and n > max then max = n end
+  end
+
+  return max
+end
+
 local modules = {}
-function module(rsc, path) -- load a LUA resource file as module
+
+-- load a lua resource file as module
+-- rsc: resource name
+-- path: lua file path without extension
+function module(rsc, path)
   if path == nil then -- shortcut for vrp, can omit the resource parameter
     path = rsc
     rsc = "vrp"
@@ -7,47 +29,87 @@ function module(rsc, path) -- load a LUA resource file as module
 
   local key = rsc..path
 
-  if modules[key] then -- cached module
-    return table.unpack(modules[key])
+  local module = modules[key]
+  if module then -- cached module
+    return module
   else
-    local f,err = load(LoadResourceFile(rsc, path..".lua"))
-    if f then
-      local ar = {pcall(f)}
-      if ar[1] then
-        table.remove(ar,1)
-        modules[key] = ar
-        return table.unpack(ar)
+    local code = LoadResourceFile(rsc, path..".lua")
+    if code then
+      local f,err = load(code, rsc.."/"..path..".lua")
+      if f then
+        local ok, res = xpcall(f, debug.traceback)
+        if ok then
+          modules[key] = res
+          return res
+        else
+          error("error loading module "..rsc.."/"..path..":"..res)
+        end
       else
-        modules[key] = nil
-        print("[vRP] error loading module "..rsc.."/"..path..":"..ar[2])
+        error("error parsing module "..rsc.."/"..path..":"..debug.traceback(err))
       end
     else
-      print("[vRP] error parsing module "..rsc.."/"..path..":"..err)
+      error("resource file "..rsc.."/"..path..".lua not found")
     end
   end
 end
 
--- generate a task metatable (helper to return delayed values with timeout)
---- dparams: default params in case of timeout or empty cbr()
---- timeout: milliseconds, default 5000
-function Task(callback, dparams, timeout) 
-  if timeout == nil then timeout = 5000 end
+-- Luaoop class
 
-  local r = {}
-  r.done = false
+local Luaoop = module("vrp", "lib/Luaoop")
+class = Luaoop.class
 
-  local finish = function(params) 
-    if not r.done then
-      if params == nil then params = dparams or {} end
-      r.done = true
-      callback(table.unpack(params))
+-- Luaseq like for FiveM
+
+local function wait(self)
+  local rets = Citizen.Await(self.p)
+  if not rets then
+    if self.r then
+      rets = self.r
+    else
+      error("async wait(): Citizen.Await returned (nil) before the areturn call.")
     end
   end
 
-  setmetatable(r, {__call = function(t,params) finish(params) end })
-  SetTimeout(timeout, function() finish(dparams) end)
+  return table.unpack(rets, 1, table_maxn(rets))
+end
 
-  return r
+local function areturn(self, ...)
+  self.r = {...}
+  self.p:resolve(self.r)
+end
+
+-- create an async returner or a thread (Citizen.CreateThreadNow)
+-- func: if passed, will create a thread, otherwise will return an async returner
+function async(func)
+  if func then
+    Citizen.CreateThreadNow(func)
+  else
+    return setmetatable({ wait = wait, p = promise.new() }, { __call = areturn })
+  end
+end
+
+local function hex_conv(c)
+  return string.format('%02X', string.byte(c))
+end
+
+-- convert Lua string to hexadecimal
+function tohex(str)
+  return string.gsub(str, '.', hex_conv)
+end
+
+
+-- basic deep clone function (doesn't handle circular references)
+function clone(t)
+  if type(t) == "table" then
+    local new = {}
+    for k,v in pairs(t) do
+      new[k] = clone(v)
+    end
+
+    return new
+  else
+    return t
+  end
 end
 
 function parseInt(v)
@@ -72,7 +134,7 @@ function parseFloat(v)
 end
 
 -- will remove chars not allowed/disabled by strchars
--- if allow_policy is true, will allow all strchars, if false, will allow everything except the strchars
+-- allow_policy: if true, will allow all strchars, if false, will allow everything except the strchars
 local sanitize_tmp = {}
 function sanitizeString(str, strchars, allow_policy)
   local r = ""
@@ -114,19 +176,4 @@ function splitString(str, sep)
   end
 
   return t
-end
-
-function joinStrings(list, sep)
-  if sep == nil then sep = "" end
-
-  local str = ""
-  local count = 0
-  local size = #list
-  for k,v in pairs(list) do
-    count = count+1
-    str = str..v
-    if count < size then str = str..sep end
-  end
-
-  return str
 end
