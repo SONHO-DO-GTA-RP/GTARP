@@ -95,48 +95,44 @@ local vehshop = {
 			title = "Showroom",
 			name = "main",
 			buttons = {
-				{name = "cars", description = ""},
-				{name = "suv-offroad", description = ""},
-				{name = "gang-cars", description = ""},
-				{name = "hitman", description = ""},
-				{name = "truck", description = ""},
-				{name = "thelostmc", description = ""},
-				{name = "motociclete", description = ""},
-				{name = "job", description = ""},
-				{name = "vip", description = ""},
-				--{name = "dmd-cars", description = ""},
-				{name = "bikes", description = ""},
-				{name = "aviation", description = ""},
+				{name = "Carros", description = ""},
+				-- {name = "suv-offroad", description = ""},
+				-- {name = "gang-Carros", description = ""},
+				-- {name = "hitman", description = ""},
+				-- {name = "truck", description = ""},
+				-- {name = "thelostmc", description = ""},
+				-- {name = "motociclete", description = ""},
+				-- {name = "job", description = ""},
+				-- {name = "vip", description = ""},
+				-- --{name = "dmd-Carros", description = ""},
+				-- {name = "bikes", description = ""},
+				-- {name = "aviation", description = ""},
 			}
 		},
-		["cars"] = {
-			title = "cars",
-			name = "cars",
+		["Carros"] = {
+			title = "Carros",
+			name = "Carros",
 			buttons = {
-				{name = "audi", description = ''},
-				{name = "bmw", description = ''},
-				{name = "mercedesbenz", description = ''},
-				{name = "ferrari", description = ''},
-				{name = "fast-and-furios", description = ''},
-				{name = "dacia", description = ''},
-				{name = "lamborghini", description = ''},
-				{name = "Aston Martin", description = ''},
-				{name = "Porche", description = ''},
-				{name = "Toyota", description = ''},
-				{name = "cars5", description = ''},
-				{name = "altele", description = ''},
+				{name = "Populares", description = ''},
+				-- {name = "bmw", description = ''},
+				-- {name = "mercedesbenz", description = ''},
+				-- {name = "ferrari", description = ''},
+				-- {name = "fast-and-furios", description = ''},
+				-- {name = "dacia", description = ''},
+				-- {name = "lamborghini", description = ''},
+				-- {name = "Aston Martin", description = ''},
+				-- {name = "Porche", description = ''},
+				-- {name = "Toyota", description = ''},
+				-- {name = "Carros5", description = ''},
+				-- {name = "altele", description = ''},
 				--{name = "cycles", description = ''},
 			}
 		},
-		["audi"] = {
-			title = "audi",
-			name = "audi",
+		["Populares"] = {
+			title = "Populares",
+			name = "Populares",
 			buttons = {
-				{name = "Audi A6 2019", costs = 500000, speed = 40, acce = 50, brake = 60, trac = 30, description = {}, model = "a6avant"},
-				{name = "Audi R8", costs = 180000, speed = 45, acce = 60, brake = 60, trac = 40, description = {}, model = "r8ppi"},
-				{name = "Audi A8 2017", costs = 700000, speed = 40, acce = 30, brake = 50, trac = 30, description = {}, model = "a8lfsi"},
-				{name = "Audi RS7", costs = 500000, speed = 40, acce = 30, brake = 40, trac = 30, description = {}, model = "rs7"},
-				{name = "Audi Q8 2019", costs = 800000, speed = 45, acce = 40, brake = 50, trac = 40, description = {}, model = "audiq8"},
+				{name = "Chevrolet Astra J", costs = 20000, speed = 40, acce = 50, brake = 60, trac = 30, description = {}, model = "astraj"},
 			}
 		},
 		["bmw"] = {
@@ -265,9 +261,9 @@ local vehshop = {
 				{name = "Dead Ringer", costs = 2300000, speed = 55, acce = 60, brake = 40, trac = 60, description = {}, model = "deadringer"},
 			}
 		},
-		["cars5"] = {
-			title = "cars5",
-			name = "cars5",
+		["Carros5"] = {
+			title = "Carros5",
+			name = "Carros5",
 			buttons = {
 			    {name = "T20", costs = 3000000, speed = 40, acce = 20, brake = 40, trac = 20, description = {}, model = "t20"},
 			    {name = "Bullet", costs = 350000, speed = 40, acce = 20, brake = 40, trac = 20, description = {}, model = "bullet"},
@@ -364,7 +360,7 @@ local vehshop = {
 			    {name = "Jeep Trailcat", costs = 1000000, speed = 30, acce = 20, brake = 40, trac = 20, description = {}, model = "trailcat"},
 			    {name = "Jeep Qiugejpa", costs = 200000, speed = 40, acce = 40, brake = 40, trac = 50, description = {}, model = "qiugejpa"},
 				{name = "Mercedes-Benz G65", costs = 200000, speed = 65, acce = 40, brake = 50, trac = 60, description = {}, model = "G65"},
-				{name = "Audi SQ7 2016", costs = 500000, speed = 40, acce = 40, brake = 40, trac = 20, description = {}, model = "SQ72016"},
+				{name = "Populares SQ7 2016", costs = 500000, speed = 40, acce = 40, brake = 40, trac = 20, description = {}, model = "SQ72016"},
 			    {name = "BMW X6M", costs = 1000000, speed = 70, acce = 40, brake = 40, trac = 40, description = {}, model = "x6m"},
 				{name = "BMW X5 E53", costs = 300000, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "x5e53"},
 				{name = "Lamborghini Urus", costs = 6500000, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "urus2018"},
@@ -377,9 +373,9 @@ local vehshop = {
 				{name = "Dubsta", costs = 400000, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "dubsta"},
 			}
 		},
-		["gang-cars"] = {
-			title = "gang-cars",
-			name = "gang-cars",
+		["gang-Carros"] = {
+			title = "gang-Carros",
+			name = "gang-Carros",
 			buttons = {
 			    {name = "Mercedes Limousine", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "alpha"},
 				{name = "Cadillac Limousine", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "limoxts"},
@@ -470,7 +466,7 @@ local vehshop = {
 			    {name = "Chiron COP", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "polchiron"},
 				{name = "Lexus GS350", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "polgs350"},
 				{name = "Police Ferarri", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "polf430"},
-				{name = "Audi A4 2017", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "police2"},
+				{name = "Populares A4 2017", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "police2"},
 				{name = "Volkswagen Passat", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "police3"},
 				{name = "Volkswagen Polo", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "sheriff"},
 				{name = "Maserati Ghibli", costs = 0, speed = 50, acce = 20, brake = 40, trac = 20, description = {}, model = "ghispo2"},
@@ -1059,7 +1055,7 @@ Citizen.CreateThread(function()
 					end
 					vehSR_drawMenuButton(button,vehshop.menu.x,y,selected)
 					if button.costs ~= nil then
-						if vehshop.currentmenu == "audi" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-cars" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "cars5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "avivip" or vehshop.currentmenu == "helivip" or vehshop.currentmenu == "swat" then
+						if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-Carros" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "Carros5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "avivip" or vehshop.currentmenu == "helivip" or vehshop.currentmenu == "swat" then
 							vehSR_drawMenuRight("$"..button.costs,vehshop.menu.x,y,selected)
 							carPrice = "$"..button.costs
 						else
@@ -1067,7 +1063,7 @@ Citizen.CreateThread(function()
 						end
 					end
 					y = y + 0.04
-					if vehshop.currentmenu == "audi" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-cars" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "cars5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "avivip" or vehshop.currentmenu == "helivip" or vehshop.currentmenu == "swat"  then
+					if vehshop.currentmenu == "Populares" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-Carros" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "Carros5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "avivip" or vehshop.currentmenu == "helivip" or vehshop.currentmenu == "swat"  then
 						if selected then
 							hash = GetHashKey(button.model)
 							if IsControlJustPressed(1,23) then
@@ -1226,8 +1222,8 @@ function vehSR_ButtonSelected(button)
 	local this = vehshop.currentmenu
 	local btn = button.name
 	if this == "main" then
-		if btn == "cars" then
-			vehSR_OpenMenu('cars')
+		if btn == "Carros" then
+			vehSR_OpenMenu('Carros')
 		elseif btn == "suv-offroad" then
 			vehSR_OpenMenu('suv-offroad')
 		elseif btn == "bikes" then
@@ -1236,8 +1232,8 @@ function vehSR_ButtonSelected(button)
 			vehSR_OpenMenu('motociclete')
 		elseif btn == "job" then
 			vehSR_OpenMenu('job')
-		elseif btn == "gang-cars" then
-			vehSR_OpenMenu('gang-cars')
+		elseif btn == "gang-Carros" then
+			vehSR_OpenMenu('gang-Carros')
 		elseif btn == "hitman" then
 			vehSR_OpenMenu('hitman')
 		elseif btn == "truck" then
@@ -1249,9 +1245,9 @@ function vehSR_ButtonSelected(button)
 		elseif btn == "aviation" then
 			vehSR_OpenMenu('aviation')
 		end
-	elseif this == "cars" then
-		if btn == "audi" then
-			vehSR_OpenMenu('audi')
+	elseif this == "Carros" then
+		if btn == "Populares" then
+			vehSR_OpenMenu('Populares')
 		elseif btn == "bmw" then
 			vehSR_OpenMenu('bmw')
 		elseif btn == "mercedesbenz" then
@@ -1270,8 +1266,8 @@ function vehSR_ButtonSelected(button)
 			vehSR_OpenMenu('Porche')
 		elseif btn == "Toyota" then
 			vehSR_OpenMenu('Toyota')
-		elseif btn == "cars5" then
-			vehSR_OpenMenu('cars5')
+		elseif btn == "Carros5" then
+			vehSR_OpenMenu('Carros5')
 		elseif btn == "altele" then
 			vehSR_OpenMenu('altele')
 		end
@@ -1307,7 +1303,7 @@ function vehSR_ButtonSelected(button)
 		elseif btn == "helivip" then
 			vehSR_OpenMenu('helivip')
 		end
-	elseif this == "audi" or this == "bmw" or this == "suv-offroad" or this == "mercedesbenz" or this == "ferrari" or this == "gang-cars" or this == "hitman" or this == "truck" or this == "thelostmc" or this == "fast-and-furios" or this == "dacia" or this == "lamborghini" or this == "Aston Martin" or this == "Porche" or this == "Toyota" or this == "cars5" or this == "bikes" or this == "altele" or this == "cop" or this == "swat" or this == "fbi" or this == "fisher" or this == "weazelnews" or this == "ems" or this == "uber" or this == "lawyer" or this == "delivery" or this == "repair" or this == "bankdriver" or this == "medicalweed" or this == "vip" or this == "avivip" or this == "helivip" or this == "swat" then
+	elseif this == "Populares" or this == "bmw" or this == "suv-offroad" or this == "mercedesbenz" or this == "ferrari" or this == "gang-Carros" or this == "hitman" or this == "truck" or this == "thelostmc" or this == "fast-and-furios" or this == "dacia" or this == "lamborghini" or this == "Aston Martin" or this == "Porche" or this == "Toyota" or this == "Carros5" or this == "bikes" or this == "altele" or this == "cop" or this == "swat" or this == "fbi" or this == "fisher" or this == "weazelnews" or this == "ems" or this == "uber" or this == "lawyer" or this == "delivery" or this == "repair" or this == "bankdriver" or this == "medicalweed" or this == "vip" or this == "avivip" or this == "helivip" or this == "swat" then
 		TriggerServerEvent('veh_SR:CheckMoneyForVeh',this,button.model,button.costs,"car",false,false)
 	elseif  this == "motociclete" then
 		TriggerServerEvent('veh_SR:CheckMoneyForVeh',this,button.model,button.costs,"bike",false,false)
@@ -1324,13 +1320,13 @@ end)
 function vehSR_OpenMenu(menu)
 	fakecar = {model = '', car = nil}
 	vehshop.lastmenu = vehshop.currentmenu
-	if menu == "cars" then
+	if menu == "Carros" then
 		vehshop.lastmenu = "main"
 	elseif menu == "suv-offroad"  then
 		vehshop.lastmenu = "main"
 	elseif menu == "motociclete"  then
 		vehshop.lastmenu = "main"
-	elseif menu == "gang-cars"  then
+	elseif menu == "gang-Carros"  then
 		vehshop.lastmenu = "main"
 	elseif menu == "hitman"  then
 		vehshop.lastmenu = "main"
@@ -1365,7 +1361,7 @@ function vehSR_Back()
 	backlock = true
 	if vehshop.currentmenu == "main" then
 		vehSR_CloseCreator("","")
-	elseif vehshop.currentmenu == "audi" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-cars" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "cars5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "swat" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "aviation" then
+	elseif vehshop.currentmenu == "Populares" or vehshop.currentmenu == "bmw" or vehshop.currentmenu == "suv-offroad" or vehshop.currentmenu == "gang-Carros" or vehshop.currentmenu == "hitman" or vehshop.currentmenu == "truck" or vehshop.currentmenu == "thelostmc" or vehshop.currentmenu == "mercedesbenz" or vehshop.currentmenu == "ferrari" or vehshop.currentmenu == "fast-and-furios" or vehshop.currentmenu == "dacia" or vehshop.currentmenu == "lamborghini" or vehshop.currentmenu == "Aston Martin" or vehshop.currentmenu == "Porche" or vehshop.currentmenu == "Toyota" or vehshop.currentmenu == "Carros5" or vehshop.currentmenu == "bikes" or vehshop.currentmenu == "altele" or vehshop.currentmenu == "motociclete" or vehshop.currentmenu == "cop" or vehshop.currentmenu == "swat" or vehshop.currentmenu == "fisher" or vehshop.currentmenu == "weazelnews" or vehshop.currentmenu == "fbi" or vehshop.currentmenu == "ems" or vehshop.currentmenu == "uber" or vehshop.currentmenu == "lawyer" or vehshop.currentmenu == "delivery" or vehshop.currentmenu == "repair" or vehshop.currentmenu == "bankdriver" or vehshop.currentmenu == "medicalweed" or vehshop.currentmenu == "vip" or vehshop.currentmenu == "aviation" then
 		if DoesEntityExist(fakecar.car) then
 			Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(fakecar.car))
 			scaleform = nil
