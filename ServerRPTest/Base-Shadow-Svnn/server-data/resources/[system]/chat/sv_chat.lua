@@ -45,7 +45,7 @@ AddEventHandler('_chat:messageEntered', function(message)
 		end
     end
 
-    print(author .. ': ' .. message)
+    print(message)
 end)
 
 AddEventHandler('__cfx_internal:commandFallback', function(command)
@@ -53,13 +53,13 @@ AddEventHandler('__cfx_internal:commandFallback', function(command)
 
     local user = vRP.users_by_source[source]
 
-    TriggerEvent('chatMessage', source, name, '/' .. command)
+    TriggerEvent('chat:addMessage', source, name, '/' .. command)
 
 	if not WasEventCanceled() then
 
 
     if user:hasPermission("owner.title") then
-			TriggerClientEvent('chatMessage', -1, "Owner | " .. author,  { 255, 0, 0 }, message)
+			TriggerClientEvent('chat:addMessage', -1, "Owner | " .. message)
 		elseif user:hasPermission("admin.title") then
 			TriggerClientEvent('chatMessage', -1, "Admin | " .. author,  { 10, 255, 0 }, message)
 		elseif user:hasPermission("mod.title") then
@@ -89,5 +89,5 @@ end)
 -- end)
 
 RegisterCommand('say', function(source, args, rawCommand)
-    TriggerClientEvent('chatMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
+    TriggerClientEvent('chat:addMessage', -1, (source == 0) and 'console' or GetPlayerName(source), { 255, 255, 255 }, rawCommand:sub(5))
 end)
