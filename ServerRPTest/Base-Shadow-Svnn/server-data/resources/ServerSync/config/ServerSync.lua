@@ -55,9 +55,9 @@ ss_enable_crowd_scaling = false
 ss_enable_dynamic_weather = true
 
 -- Default weather type for when the resource starts
--- Options: EXTRASUNNY, CLEAR, NEUTRAL, SMOG, FOGGY, OVERCAST, CLOUDS, CLEARING, 
+-- Options: EXTRASUNNY, CLEAR, NEUTRAL, , FOGGY, OVERCAST, CLOUDS, CLEARING, 
 -- Options: RAIN, THUNDER, SNOW, BLIZZARD, SNOWLIGHT, XMAS, HALLOWEEN
-ss_default_weather = "SNOW"   
+ss_default_weather = "CLEAR"   
 
 -- Weather timer (in minutes) between dynamic weather changes (Default: 10minutes)
 ss_weather_timer = 15
@@ -71,13 +71,13 @@ ss_rain_timeout = 45
 -- Example: ["CurrentWeather"] = {"Next Possible Weather 1", "Next Possible Weather 2"}
 -- Note: Default config only uses fairly 'clear' weather options to stay away from foggy environment effects.
 ss_weather_Transition = {
-	["EXTRASUNNY"] = {"CLEAR","SMOG"},
+	["EXTRASUNNY"] = {"CLEAR"},
 	["SMOG"]       = {"CLEAR","CLEARING","OVERCAST","CLOUDS","EXTRASUNNY"},
-	["CLEAR"]      = {"CLOUDS","EXTRASUNNY","CLEARING","SMOG","OVERCAST"},
-	["CLOUDS"]     = {"CLEAR","SMOG","CLEARING","OVERCAST"},
-	["OVERCAST"]   = {"CLEAR","CLOUDS","SMOG","CLEARING","THUNDER"},
+	["CLEAR"]      = {"CLOUDS","EXTRASUNNY","CLEARING","OVERCAST"},
+	["CLOUDS"]     = {"CLEAR","CLEARING","OVERCAST"},
+	["OVERCAST"]   = {"CLEAR","CLOUDS","CLEARING","THUNDER"},
 	["THUNDER"]    = {"OVERCAST"}, -- Always rotate away from Thunder, as it's annoying
-	["CLEARING"]   = {"CLEAR","CLOUDS","OVERCAST","SMOG"},
+	["CLEARING"]   = {"CLEAR","CLOUDS","OVERCAST",""},
 	["SNOW"]       = {"SNOW","SNOWLIGHT"},  -- Usually used for events - never changes and has to be manually set via /weather command
     ["SNOWLIGHT"]  = {"SNOW","SNOWLIGHT"},  -- Usually used for events - never changes and has to be manually set via /weather command
 	["BLIZZARD"]   = {"BLIZZARD"},          -- Usually used for events - never changes and has to be manually set via /weather command
@@ -97,7 +97,7 @@ ss_wind_speed_max = 10.00
 -- Default for Extrasunny is 0.5. This means that the max wind speed above is multiplied by 0.5 to get 1.0 wind speed
 ss_wind_speed_Mult = {
     ["EXTRASUNNY"] = 0.2 * ss_wind_speed_max,
-    ["SMOG"]       = 0.1 * ss_wind_speed_max,
+    [""]       = 0.1 * ss_wind_speed_max,
 	["CLEAR"]      = 0.3 * ss_wind_speed_max,
 	["CLOUDS"]     = 0.1 * ss_wind_speed_max,
 	["OVERCAST"]   = 0.7 * ss_wind_speed_max,
