@@ -17,7 +17,7 @@ cfg.groups = {
     "player.givemoney",
     "player.giveitem",
     "admin.blips",
-    "owner.chattitle"
+    "owner.title"
   },
   ["admin"] = {
     "admin.tickets",
@@ -41,7 +41,7 @@ cfg.groups = {
 	  "admin.easy_unjail",
 	  "admin.spikes",
     "player.tpto",
-    "admin.chattitle"
+    "admin.title"
   },
   ["moderador"] = {
     _config = {onspawn = function(player) vRPclient.notify(player,{"Você é um ~r~moderador."}) end},
@@ -53,7 +53,8 @@ cfg.groups = {
     "player.tptome",
     "player.list",
     "player.kick",
-    "player.tpto"
+    "player.tpto",
+    "mod.title"
   },   
   -- the group user is auto added to all logged players
   ["user"] = {
