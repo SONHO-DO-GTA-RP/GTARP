@@ -44,14 +44,14 @@ cfg.services = {
     notify = "~b~Você chamou um advogado.",
     answer_notify = "~b~O advogado está a caminho."
   },  
-  ["🚕Taxi"] = {
+  ["🚕Uber"] = {
     blipid = 198,
     blipcolor = 5,
     alert_time = 300,
     alert_permission = "taxi.service",
-    alert_notify = "~y~[TAXI] Voce tem um Chamado para corrida:~n~~s~",
-    notify = "~y~Você chamou um táxi.",
-    answer_notify = "~y~Um Taxi está a caminho."
+    alert_notify = "~y~[Uber] Voce tem um Chamado para corrida:~n~~s~",
+    notify = "~y~Você chamou um Uber.",
+    answer_notify = "~y~Um Uber está a caminho."
   },
   ["🔧Mecanico"] = {
     blipid = 446,

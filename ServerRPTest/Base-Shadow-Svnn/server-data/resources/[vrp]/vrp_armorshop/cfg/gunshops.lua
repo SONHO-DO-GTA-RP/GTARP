@@ -116,28 +116,31 @@ cfg.gunshop_types = {
 
   ["basic"] = {
     _config = {blipid=110,blipcolor=75},
-    ["WEAPON_MARKSMANPISTOL"] = {"Marksman Pistol",15000,15,""},
-    ["WEAPON_SNSPISTOL"] = {"SNS Pistol",25000,15,""},
-    ["WEAPON_GRENADE"] = {"Grenade",500000,70,""},
-    ["WEAPON_SMOKEGRENADE"] = {"Smoke Grenade",50000,0,""},
-    ["WEAPON_PETROLCAN"] = {"Petrol",5000,0,""},
-    ["ARMOR"] = {"Body Armor",10000,0,""}
+    -- ["WEAPON_MARKSMANPISTOL"] = {"Marksman Pistol",15000,15,""},
+    ["WEAPON_PISTOL"] = {"Pistol",50000,150,""},
+    ["WEAPON_BAT"] = {"Bastao",15000,0,""},
+    ["WEAPON_KNUCKLE"] = {"Soco Ingles",15000,0,""},
+    ["WEAPON_KNIFE"] = {"Faca",20000,0,""},
+    -- ["WEAPON_GRENADE"] = {"Grenade",500000,70,""},
+    ["WEAPON_SMOKEGRENADE"] = {"Bomba de Fumaca",50000,0,""},
+    -- ["WEAPON_PETROLCAN"] = {"Petrol",5000,0,""},
+    ["ARMOR"] = {"Colete a Prova de Balas",50000,0,""}
   }
 }
 
 -- list of gunshops positions
 
 cfg.gunshops = {
-  {"melees", 1692.41, 3758.22, 34.7053},
-  {"sidearms", 252.696, -48.2487, 69.941},
-  {"carabines", 844.299, -1033.26, 28.1949},
-  {"rifles", -331.624, 6082.46, 31.4548},
-  {"submachineguns", -664.147, -935.119, 21.8292},
-  {"sidearms", -1305.45056152344,-394.0068359375,36.6957740783691},
-  {"explosives", -1119.48803710938,2697.08666992188,18.5541591644287},
-  {"heavymachineguns", 2569.62, 294.453, 108.735},
-  {"snipers", -3172.60375976563,1085.74816894531,20.8387603759766},
-  {"shotguns", 21.70, -1107.41, 29.79},
+  {"basic", 1692.41, 3758.22, 34.7053},
+  {"basic", 252.696, -48.2487, 69.941},
+  {"basic", 844.299, -1033.26, 28.1949},
+  {"basic", -331.624, 6082.46, 31.4548},
+  {"basic", -664.147, -935.119, 21.8292},
+  {"basic", -1305.45056152344,-394.0068359375,36.6957740783691},
+  {"basic", -1119.48803710938,2697.08666992188,18.5541591644287},
+  {"basic", 2569.62, 294.453, 108.735},
+  {"basic", -3172.60375976563,1085.74816894531,20.8387603759766},
+  {"basic", 21.70, -1107.41, 29.79},
   {"basic", 810.15, -2156.88, 29.61}
 }
 
