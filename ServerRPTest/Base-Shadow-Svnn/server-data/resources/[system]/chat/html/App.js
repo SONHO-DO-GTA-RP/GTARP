@@ -105,11 +105,11 @@ window.APP = {
         e.preventDefault();
         this.moveOldMessageIndex(e.which === 38);
       } else if (e.which == 33) {
-        var buf = document.getElementsByClassName('chat-messages')[0];
-        buf.scrollTop = buf.scrollTop - 100;
+        const buf = $(this.$refs.messages);
+        buf.scrollTop(buf.scrollTop() - 50);
       } else if (e.which == 34) {
-        var buf = document.getElementsByClassName('chat-messages')[0];
-        buf.scrollTop = buf.scrollTop + 100;
+        const buf = $(this.$refs.messages);
+        buf.scrollTop(buf.scrollTop() + 50);
       }
     },
     moveOldMessageIndex(up) {
