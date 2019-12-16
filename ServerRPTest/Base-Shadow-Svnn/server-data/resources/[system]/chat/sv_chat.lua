@@ -13,12 +13,12 @@ RegisterServerEvent('_chat:messageEntered')
 RegisterServerEvent('chat:clear')
 RegisterServerEvent('__cfx_internal:commandFallback')
 
-AddEventHandler('_chat:messageEntered', function(author, color, message)
-    if not message or not author then
+AddEventHandler('_chat:messageEntered', function(message)
+    if not message then
         return
     end
 
-    TriggerEvent('chatMessage', source, author, message)
+    TriggerEvent('chat:addMessage', message)
 
 
 
@@ -28,14 +28,14 @@ AddEventHandler('_chat:messageEntered', function(author, color, message)
 
 
 		if user:hasPermission("owner.title") then
-			TriggerClientEvent('chatMessage', -1, "Owner | " .. author,  { 255, 100, 20 }, message)
+			TriggerClientEvent('chat:addMessage', -1, "Owner | " .. message)
 --- IF YOU WANT TO MAKE MORE TITLES, COPY BETWEEN THESE LINES AND THEN PASTE UNDER THE LINE, AND YOU NEED TO MAKE
 --- YOUR OWN PERMISSION IF YOU MAKE ANOTHER ONE SINCE THESE ARE JUST EXAMPLES
 		elseif user:hasPermission("admin.title") then
-			TriggerClientEvent('chatMessage', -1, "Admin | " .. author,  { 10, 255, 0 }, message)
+			TriggerClientEvent('chat:addMessage', -1, "Admin | " .. message)
 ---
 		elseif user:hasPermission("mod.title") then
-			TriggerClientEvent('chatMessage', -1, "Moderator | " .. author,  { 255, 0, 255 }, message)
+			TriggerClientEvent('chat:addMessage', -1, "Moderator | " .. message)
 		elseif user:hasGroup("police") then
 			TriggerClientEvent('chatMessage', -1, "Police Officer | " .. author,{ 20, 20, 250 }, message)
 		elseif user:hasGroup("emergency") then
