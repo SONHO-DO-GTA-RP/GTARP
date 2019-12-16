@@ -117,7 +117,7 @@ cfg.gunshop_types = {
   ["basic"] = {
     _config = {blipid=110,blipcolor=75},
     -- ["WEAPON_MARKSMANPISTOL"] = {"Marksman Pistol",15000,15,""},
-    ["WEAPON_PISTOL"] = {"Pistol",25000,15,""},
+    ["WEAPON_PISTOL"] = {"Pistol",50000,150,""},
     ["WEAPON_BAT"] = {"Bastao",15000,0,""},
     ["WEAPON_KNUCKLE"] = {"Soco Ingles",15000,0,""},
     ["WEAPON_KNIFE"] = {"Faca",20000,0,""},
