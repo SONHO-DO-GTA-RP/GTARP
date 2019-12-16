@@ -131,7 +131,7 @@ cfg.groups = {
     "repair.service",
 	  "repair.garagem"
   },
-  ["Taxi"] = {
+  ["Uber"] = {
     _config = { gtype = "job" },
     "taxi.service",
 	  "taxi.paycheck",
@@ -156,21 +156,29 @@ cfg.groups = {
 	-- "mission.delivery.weed",
 	-- "mission.delivery.pot"
   -- },
-  ["Traficante de Metanfetamina"] = {
+  ["Comando Vermelho"] = {
     _config = { gtype = "job" },
 	"harvest.metanfetamina",
 	"process.metanfetamina",
 	"mission.delivery.metanfetamina",
-	"mission.delivery.pot3"
+	-- "mission.delivery.pot3"
   },  
-  ["Traficante de Cocaina"] = {
+  ["Los Zetas"] = {
     _config = { gtype = "job" },
 	"process.cocaina",
 	"harvest.cocaina",
 	"mission.delivery.cocaina",
-	"mission.delivery.pot2"
+	-- "mission.delivery.pot2"
   },  
-  ["Traficante de Armas"] = {
+  ["Yakuza"] = {
+    _config = { gtype = "job" },
+	"build.gun",
+	"mission.delivery.pistol",
+	"mission.delivery.shotgun",
+	"mission.delivery.smg",
+	"mission.gunrunner.shipment"
+  },
+  ["Mafia Italiana"] = {
     _config = { gtype = "job" },
 	"build.gun",
 	"mission.delivery.pistol",
@@ -239,15 +247,15 @@ cfg.selectors = {
   ["Emprego Samu"] = {
     _config = {x = 275.19491577148, y = -1361.23828125, z = 24.537799835205, blipid = 351, blipcolor = 3},
 	"Paramédico",
-  },  	
-  ["Empregos Ilegais"] = {
-    _config = {x = 707.324462890625, y = -966.986511230469, z = 30.4128551483154, blipid = 351, blipcolor = 49},
-	"Ladrão de Carros",
-	"Traficante de Metanfetamina",
-	"Traficante de Maconha",
-	"Traficante de Cocaina",	
-	"Traficante de Armas"
-  } 
+  }  	
+  -- ["Empregos Ilegais"] = {
+  --   _config = {x = 707.324462890625, y = -966.986511230469, z = 30.4128551483154, blipid = 351, blipcolor = 49},
+	-- "Ladrão de Carros",
+	-- "Traficante de Metanfetamina",
+	-- "Traficante de Maconha",
+	-- "Traficante de Cocaina",	
+	-- "Traficante de Armas"
+  -- } 
 }
 
 return cfg
