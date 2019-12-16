@@ -16,7 +16,8 @@ cfg.groups = {
     "player.group.remove",
     "player.givemoney",
     "player.giveitem",
-    "admin.blips"
+    "admin.blips",
+    "owner.chattitle"
   },
   ["admin"] = {
     "admin.tickets",
@@ -39,7 +40,8 @@ cfg.groups = {
 	  "player.tptowaypoint",
 	  "admin.easy_unjail",
 	  "admin.spikes",
-    "player.tpto"
+    "player.tpto",
+    "admin.chattitle"
   },
   ["moderador"] = {
     _config = {onspawn = function(player) vRPclient.notify(player,{"Você é um ~r~moderador."}) end},
